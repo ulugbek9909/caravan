@@ -23,7 +23,6 @@ public class ConverterService {
         return null;
     }
 
-
     public static ProfileDTO convertToDTO(ProfileEntity entity) {
         ProfileDTO dto = new ProfileDTO();
         dto.setGender(entity.getGender());
@@ -76,8 +75,7 @@ public class ConverterService {
         return entity;
     }
 
-
-    public RegionDTO convertToDatabaseColumn(RegionEntity entity) {
+    public RegionDTO convertToDatabaseColumn(RegionEntity tripEntity) {
         return null;
     }
 
