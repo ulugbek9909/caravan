@@ -1,8 +1,10 @@
 package com.caravan.caravan.service;
 
+import com.caravan.caravan.dto.GuideProfileDTO;
 import com.caravan.caravan.dto.ProfileDTO;
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.dto.TripDTO;
+import com.caravan.caravan.entity.GuideProfileEntity;
 import com.caravan.caravan.entity.ProfileEntity;
 import com.caravan.caravan.entity.RegionEntity;
 import com.caravan.caravan.entity.TripEntity;
@@ -39,6 +41,20 @@ public class ConverterService  {
         return dto;
     }
 
+    public static GuideProfileDTO convertToDTO(GuideProfileEntity entity){
+        var dto = new GuideProfileDTO();
+
+        dto.setProfileId(entity.getProfileId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setContent(entity.getContent());
+        dto.setIsHiring(entity.getIsHiring());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setId(entity.getId());
+        dto.setUpdatedDate(entity.getUpdatedDate());
+        dto.setGuideRate(entity.getGuideRate());
+
+        return dto;
+    }
 
     public static ProfileEntity convertToEntityAttribute(ProfileDTO dto) {
         ProfileEntity entity = new ProfileEntity();
@@ -54,7 +70,6 @@ public class ConverterService  {
     public RegionDTO convertToDatabaseColumn(RegionEntity tripEntity) {
         return null;
     }
-
 
 
     public RegionEntity convertToEntityAttribute(RegionDTO tripDTO) {
