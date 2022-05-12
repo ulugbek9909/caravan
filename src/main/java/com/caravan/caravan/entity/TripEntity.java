@@ -12,5 +12,4 @@ import lombok.Setter;
 
 public class TripEntity extends BaseEntity{
 
-
 }
