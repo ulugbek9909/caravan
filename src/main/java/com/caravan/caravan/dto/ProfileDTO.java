@@ -1,5 +1,6 @@
 package com.caravan.caravan.dto;
 
+import com.caravan.caravan.annotation.ValidEmail;
 import com.caravan.caravan.enums.ProfileGender;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
@@ -15,12 +16,18 @@ import java.util.UUID;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfileDTO {
+
     private UUID id;
+
     private String name;
+
     private String surname;
-    private String phoneNumber;
+
+    @ValidEmail
     private String email;
+
     private ProfileRole role;
+
     private ProfileStatus status;
     private ProfileGender gender;
     private LocalDateTime createdDate;

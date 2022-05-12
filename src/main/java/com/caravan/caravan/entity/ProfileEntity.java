@@ -17,8 +17,6 @@ public class ProfileEntity extends BaseEntity {
     private String name;
     @Column(nullable = false)
     private String surname;
-    @Column(nullable = false)
-    private String phoneNumber;
     @Column
     private String email;
     @Column
