@@ -18,6 +18,8 @@ public class ProfileEntity extends BaseEntity {
     @Column(nullable = false)
     private String surname;
     @Column
+    private String phoneNumber;
+    @Column
     private String email;
     @Column
     @Enumerated(EnumType.STRING)

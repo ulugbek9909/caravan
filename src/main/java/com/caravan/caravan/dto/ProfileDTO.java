@@ -25,7 +25,7 @@ public class ProfileDTO {
 
     @ValidEmail
     private String email;
-
+private String phoneNumber;
     private ProfileRole role;
 
     private ProfileStatus status;
