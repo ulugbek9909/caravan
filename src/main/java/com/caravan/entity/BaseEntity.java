@@ -23,6 +23,10 @@ public class BaseEntity {
     private LocalDateTime createdDate;
 
 
+    @Column
+    private LocalDateTime updatedDate;
+
+
 
 
 }
