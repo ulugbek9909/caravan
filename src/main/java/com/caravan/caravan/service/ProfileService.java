@@ -4,7 +4,7 @@ import com.caravan.caravan.dto.ProfileDTO;
 import com.caravan.caravan.entity.ProfileEntity;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
-import com.caravan.caravan.exceptions.ItemAlreadyExistsExceptions;
+import com.caravan.caravan.exceptions.ItemAlreadyExistsException;
 import com.caravan.caravan.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class ProfileService {
 
     public ProfileDTO create(ProfileDTO dto){
         Optional<ProfileEntity> profile = repository.findByPhoneNumber(dto.getPhoneNumber());
-        if (profile.isPresent()) throw new ItemAlreadyExistsExceptions("item all ready exists!");
+        if (profile.isPresent()) throw new ItemAlreadyExistsException("item all ready exists!");
 
         ProfileEntity entity = new ProfileEntity();
         entity.setName(dto.getName());
