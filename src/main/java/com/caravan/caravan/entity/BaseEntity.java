@@ -17,7 +17,6 @@ public class BaseEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-
     @Column
     @CreationTimestamp
     private LocalDateTime createdDate;
@@ -25,8 +24,4 @@ public class BaseEntity {
 
     @Column
     private LocalDateTime updatedDate;
-
-
-
-
 }
