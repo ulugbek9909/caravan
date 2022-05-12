@@ -1,19 +1,15 @@
 package com.caravan.caravan.entity;
 
-import com.caravan.caravan.dto.RegionDTO;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "district")
-@Slf4j
 public class DistrictEntity extends BaseEntity{
     @Column(name = "name_uz")
     private String nameUz;
@@ -21,10 +17,15 @@ public class DistrictEntity extends BaseEntity{
     private String nameRu;
     @Column(name = "name_en")
     private String nameEn;
-    @Column(name = "nkey")
+    @Column(name = "key")
     private String key;
+
+
     @Column(name = "region_id")
-    private RegionDTO regionId;
+    private UUID regionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id", insertable = false, updatable = false)
+    private RegionEntity region;
 
 
 }

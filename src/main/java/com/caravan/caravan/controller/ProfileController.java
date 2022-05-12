@@ -21,30 +21,31 @@ public class ProfileController {
 
     //get by id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") UUID id){
+    public ResponseEntity<?> getById(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     //create profile
     @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody @Valid ProfileDTO dto){
+    public ResponseEntity<?> create(@RequestBody @Valid ProfileDTO dto) {
         return ResponseEntity.ok(service.create(dto));
     }
 
     //update profile
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("id") UUID id,
-                                    @RequestBody @Valid ProfileDTO dto){
-        return ResponseEntity.ok(service.update(id,dto));
+                                    @RequestBody @Valid ProfileDTO dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
+
     //delete profile
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id){
+    public ResponseEntity<?> delete(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(service.delete(id));
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getProfileList(){
+    public ResponseEntity<?> getProfileList() {
         return ResponseEntity.ok(service.getList());
     }
 }
