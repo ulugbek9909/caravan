@@ -14,8 +14,6 @@ public interface DistrictRepository extends JpaRepository<DistrictEntity, UUID> 
 
     Optional<DistrictEntity> findByKey(String key);
 
-    Optional<DistrictEntity> findById(Integer id);
-
     @Transactional
     @Modifying
     @Query("delete from ProfileEntity  where id = :id")

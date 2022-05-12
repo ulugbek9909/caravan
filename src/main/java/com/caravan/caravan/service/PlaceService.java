@@ -20,7 +20,11 @@ public class PlaceService {
 
     private final PlaceRepository repository;
 
+    private final DistrictService service;
+
     public PlaceDTO create(PlaceDTO dto) {
+        service.getById(dto.getId());
+
         PlaceEntity entity = new PlaceEntity();
         entity.setTitle(dto.getTitle());
         entity.setDescription(entity.getDescription());
@@ -30,10 +34,26 @@ public class PlaceService {
         return toDTO(entity);
     }
 
-    public PageImpl<PlaceDTO> list(int page, int size, String id) {
+    public PlaceDTO get(String districtId) {
+        return toDTO(getById(districtId));
+    }
+
+    public PageImpl<PlaceDTO> list(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<PlaceEntity> entityList = repository.findAllByDistrictId(UUID.fromString(id), pageable);
+        Page<PlaceEntity> entityList = repository.findAll(pageable);
+        List<PlaceDTO> dtoList = new LinkedList<>();
+
+        entityList.forEach(entity -> {
+            dtoList.add(toDTO(entity));
+        });
+        return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
+    }
+
+    public PageImpl<PlaceDTO> listByDistrictId(int page, int size, String districtId) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<PlaceEntity> entityList = repository.findAllByDistrictId(UUID.fromString(districtId), pageable);
         List<PlaceDTO> dtoList = new LinkedList<>();
 
         entityList.forEach(entity -> {

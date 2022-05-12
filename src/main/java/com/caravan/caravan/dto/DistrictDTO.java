@@ -15,7 +15,7 @@ public class DistrictDTO {
     private String nameEn;
     private String key;
     private RegionDTO region;
-    private Integer regionId;
+    private String regionId;
 
     private LocalDateTime createDate;
     private LocalDateTime updateDate;

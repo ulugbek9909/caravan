@@ -21,6 +21,7 @@ public class PlaceDTO {
     @NotBlank(message = "Description required")
     private String description;
 
+    @NotBlank(message = "District Id required")
     private String districtId;
 
     private Integer tripCount;

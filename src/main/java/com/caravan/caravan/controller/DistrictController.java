@@ -18,18 +18,18 @@ public class DistrictController {
         return ResponseEntity.ok(districtService.create(dto));
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody DistrictDTO dto) {
-        return ResponseEntity.ok(districtService.update(id, dto));
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody DistrictDTO dto) {
+//        return ResponseEntity.ok(districtService.update(id, dto));
+//    }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(districtService.delete(id));
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+//        return ResponseEntity.ok(districtService.delete(id));
+//    }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> getById(@PathVariable("id") String id) {
         return ResponseEntity.ok(districtService.getById(id));
     }
 

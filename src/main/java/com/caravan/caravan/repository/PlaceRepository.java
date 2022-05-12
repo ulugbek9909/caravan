@@ -15,6 +15,7 @@ public interface PlaceRepository extends JpaRepository<PlaceEntity, UUID> {
 
 
     Page<PlaceEntity> findAllByDistrictId(UUID districtId, Pageable pageable);
+
     @Transactional
     @Modifying
     @Query(value = "update PlaceEntity set tripCount = tripCount + 1 where id =:id")
