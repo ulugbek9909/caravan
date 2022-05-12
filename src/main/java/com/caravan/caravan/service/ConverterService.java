@@ -16,7 +16,7 @@ import javax.persistence.Converter;
 import javax.persistence.AttributeConverter;
 
 @Service
-public class ConverterService  {
+public class ConverterService {
 
 
     public static TripDTO convertToDTO(TripEntity tripEntity) {
@@ -41,7 +41,7 @@ public class ConverterService  {
         return dto;
     }
 
-    public static GuideProfileDTO convertToDTO(GuideProfileEntity entity){
+    public static GuideProfileDTO convertToDTO(GuideProfileEntity entity) {
         var dto = new GuideProfileDTO();
 
         dto.setProfileId(entity.getProfileId());
@@ -54,6 +54,19 @@ public class ConverterService  {
         dto.setGuideRate(entity.getGuideRate());
 
         return dto;
+    }
+
+    public static GuideProfileEntity convertToEntity(GuideProfileDTO dto) {
+        var entity = new GuideProfileEntity();
+
+        entity.setProfileId(dto.getProfileId());
+        entity.setCreatedDate(entity.getCreatedDate());
+        entity.setContent(dto.getContent());
+        entity.setIsHiring(dto.getIsHiring());
+        entity.setPhoneNumber(dto.getPhoneNumber());
+        entity.setGuideRate(dto.getGuideRate());
+
+        return entity;
     }
 
     public static ProfileEntity convertToEntityAttribute(ProfileDTO dto) {
