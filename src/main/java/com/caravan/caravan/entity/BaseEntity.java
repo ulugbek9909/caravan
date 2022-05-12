@@ -17,12 +17,11 @@ public class BaseEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-
     @Column
     @CreationTimestamp
     private LocalDateTime createdDate;
 
+
     @Column
     private LocalDateTime updatedDate;
-
 }
