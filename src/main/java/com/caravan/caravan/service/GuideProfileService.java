@@ -2,7 +2,9 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.GuideProfileDTO;
 import com.caravan.caravan.entity.GuideProfileEntity;
+import com.caravan.caravan.entity.ProfileEntity;
 import com.caravan.caravan.exceptions.ItemAlreadyExistsException;
+import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.GuideProfileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,10 +42,22 @@ public class GuideProfileService {
     }
 
     public GuideProfileDTO getById(String uuid) {
-        Optional<GuideProfileEntity> optional = repository.findById(UUID.fromString(uuid));
+        GuideProfileEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
+        return toDTO(entity);
+    }
 
-        if (optional.isPresent()) {
-            throw new
-        }
+    private GuideProfileDTO toDTO(GuideProfileEntity entity) {
+        var dto = new GuideProfileDTO();
+
+        dto.setProfileId(entity.getProfileId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setContent(entity.getContent());
+        dto.setIsHiring(entity.getIsHiring());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setId(entity.getId());
+        dto.setUpdatedDate(entity.getUpdatedDate());
+        dto.setGuideRate(entity.getGuideRate());
+
+        return dto;
     }
 }
