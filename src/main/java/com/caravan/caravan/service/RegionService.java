@@ -2,6 +2,7 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.entity.RegionEntity;
+import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +35,7 @@ public class RegionService {
     public RegionDTO getById(UUID id){
         Optional<RegionEntity> optional = repository.findById(id);
         if (optional.isPresent()){
-            throw new ItemNotFound("Region not found");
+            throw new ItemNotFoundException("Region not found");
         }
         return toDTO(optional.get());
     }
