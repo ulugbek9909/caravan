@@ -1,6 +1,6 @@
 package com.caravan.caravan.service;
 
-import com.caravan.caravan.dto.AttachDto;
+import com.caravan.caravan.dto.AttachDTO;
 import com.caravan.caravan.entity.AttachEntity;
 import com.caravan.caravan.exceptions.AppBadRequestException;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
@@ -35,6 +35,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AttachService {
+    private final ConverterService converter;
     @Autowired
     private AttachRepository attachRepository;
     @Value("${attach.upload.folder}")
@@ -42,7 +43,7 @@ public class AttachService {
     @Value("${server.domain.name}")
     private String domainName;
 
-    public AttachDto upload(MultipartFile file){
+    public AttachDTO upload(MultipartFile file){
         String pathFolder=getYmDString();
         File folder=new File(attachFolder+pathFolder);
         if (folder.exists()){
@@ -52,9 +53,9 @@ public class AttachService {
         String key = UUID.randomUUID().toString();
         String extension=getExtension(file.getOriginalFilename());
         AttachEntity entity = saveAttach(key, pathFolder, extension, file);
-        AttachDto dto = toDTO(entity);
+        AttachDTO dto = toDTO(entity);
 
-        try {// uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
+        try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(attachFolder + pathFolder + "/" + key + "." + extension);
             Files.write(path, bytes);
@@ -62,27 +63,6 @@ public class AttachService {
             e.printStackTrace();
         }
         return dto;
-    }
-    public AttachEntity uploadForProfile(MultipartFile file) {
-        String pathFolder = getYmDString(); // 2022/04/23
-        File folder = new File(attachFolder + pathFolder);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-
-        String key = UUID.randomUUID().toString(); // dasdasd-dasdasda-asdasda-asdasd
-        String extension = getExtension(file.getOriginalFilename()); // dasda.asdas.dasd.jpg
-
-        AttachEntity entity = saveAttach(key, pathFolder, extension, file);
-
-        try {// uploads/2022/04/23/dasdasd-dasdasda-asdasda-asdasd.jpg
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(attachFolder + pathFolder + "/" + key + "." + extension);
-            Files.write(path, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return entity;
     }
 
     public byte[] open_general(String key) {
@@ -120,15 +100,9 @@ public class AttachService {
         }
     }
 
-    public AttachDto update(MultipartFile fileDto, String key ){
+    public AttachDTO update(MultipartFile fileDto, String key ){
         if (delete(key)) {
             return upload(fileDto);
-        } else throw new AppBadRequestException("Could not read the file!");
-    }
-
-    public AttachEntity updateForProfile(MultipartFile fileDto, String key ){
-        if (delete(key)) {
-            return uploadForProfile(fileDto);
         } else throw new AppBadRequestException("Could not read the file!");
     }
 
@@ -157,8 +131,8 @@ public class AttachService {
         return entity;
     }
 
-    public AttachDto toDTO(AttachEntity entity) {
-        AttachDto dto = new AttachDto();
+    public AttachDTO toDTO(AttachEntity entity) {
+        AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setOriginName(entity.getOriginName());
@@ -166,22 +140,10 @@ public class AttachService {
         dto.setUrl(domainName + "/attach/download/" + entity.getId());
         return dto;
     }
-
-    public String toOpenURL(String id) {
-        return domainName + "/attach/open_general/" + id;
-    }
-
-    public String getPhotoURL(AttachEntity entity) {
-
-        return attachFolder+entity.getPath() + "/" + entity.getId() + "." + entity.getExtension();
-    }
-
-
-
-    public List<AttachDto>paginationList(int page, int size) {
+    public List<AttachDTO>paginationList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdDate"));
 
-        List<AttachDto> dtoList = new ArrayList<>();
+        List<AttachDTO> dtoList = new ArrayList<>();
         attachRepository.findAll(pageable).stream().forEach(entity -> {
             dtoList.add(toDTO(entity));
         });

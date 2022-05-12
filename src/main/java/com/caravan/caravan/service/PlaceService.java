@@ -6,8 +6,11 @@ import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.PlaceRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -17,14 +20,61 @@ public class PlaceService {
 
     private final PlaceRepository repository;
 
+    private final DistrictService service;
+
     public PlaceDTO create(PlaceDTO dto) {
+        service.getById(dto.getId());
+
         PlaceEntity entity = new PlaceEntity();
         entity.setTitle(dto.getTitle());
         entity.setDescription(entity.getDescription());
-        entity.setDistrictId(dto.getDistrictId());
+        entity.setDistrictId(UUID.fromString(dto.getDistrictId()));
 
         repository.save(entity);
         return toDTO(entity);
+    }
+
+    public PlaceDTO get(String districtId) {
+        return toDTO(getById(districtId));
+    }
+
+    public PageImpl<PlaceDTO> list(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<PlaceEntity> entityList = repository.findAll(pageable);
+        List<PlaceDTO> dtoList = new LinkedList<>();
+
+        entityList.forEach(entity -> {
+            dtoList.add(toDTO(entity));
+        });
+        return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
+    }
+
+    public PageImpl<PlaceDTO> listByDistrictId(int page, int size, String districtId) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<PlaceEntity> entityList = repository.findAllByDistrictId(UUID.fromString(districtId), pageable);
+        List<PlaceDTO> dtoList = new LinkedList<>();
+
+        entityList.forEach(entity -> {
+            dtoList.add(toDTO(entity));
+        });
+        return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
+    }
+
+    public PlaceDTO update(String id, PlaceDTO dto) {
+        PlaceEntity entity = getById(id);
+        entity.setTitle(dto.getTitle());
+        entity.setDescription(dto.getDescription());
+
+        repository.save(entity);
+        return toDTO(entity);
+    }
+
+    public Boolean delete(String id) {
+        PlaceEntity entity = getById(id);
+        repository.delete(entity);
+        return true;
     }
 
     public PlaceDTO toDTO(PlaceEntity entity) {
