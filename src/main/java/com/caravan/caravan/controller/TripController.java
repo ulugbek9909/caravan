@@ -29,12 +29,12 @@ public class TripController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<?> getById(@RequestParam UUID id) {
+    public ResponseEntity<?> getById(@PathVariable UUID id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<?> update(@RequestParam UUID id, TripDTO dto) {
+    public ResponseEntity<?> update(@PathVariable UUID id, TripDTO dto) {
 
         return ResponseEntity.ok(service.update(id,dto));
     }
