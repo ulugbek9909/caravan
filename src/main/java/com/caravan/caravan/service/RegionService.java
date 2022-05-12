@@ -1,5 +1,4 @@
 package com.caravan.caravan.service;
-
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.entity.RegionEntity;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
@@ -7,7 +6,6 @@ import com.caravan.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +32,7 @@ public class RegionService {
 
     public RegionDTO getById(UUID id){
         Optional<RegionEntity> optional = repository.findById(id);
-        if (optional.isPresent()){
+        if (!optional.isPresent()){
             throw new ItemNotFoundException("Region not found");
         }
         return toDTO(optional.get());
@@ -48,9 +46,10 @@ public class RegionService {
         }
         return regionDTOList;
     }
+
     public RegionDTO update(UUID id,RegionDTO dto){
         Optional<RegionEntity> optional = repository.findById(id);
-        if (optional.isPresent()){
+        if (!optional.isPresent()){
             throw new ItemNotFoundException("region not found");
         }
 
@@ -61,6 +60,14 @@ public class RegionService {
         repository.save(entity);
         return dto;
 
+    }
+
+    public void deleteById(UUID id){
+        Optional<RegionEntity> optional = repository.findById(id);
+        if (!optional.isPresent()){
+            throw new ItemNotFoundException("region not found");
+        }
+        repository.deleteById(id);
     }
 
     public RegionDTO toDTO(RegionEntity entity){
