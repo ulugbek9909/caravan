@@ -1,0 +1,23 @@
+----------1. Profile (CRUD)
+1.Guide acount(CRUD)
+
+----------2.Trip(CRUD)(Guide)
+1.trip place
+2.trip rate
+3.trip price
+4.
+----------3.Attach(CRUD)
+
+----------4.District(CRUD)(ADMIN,MODERATOR)
+
+----------5.Region(CRUD)(ADMIN,MODERATOR)
+
+----------6.Place(CRUD)
+1.Place attach(CRUD)
+
+----------7.Facility(CRUD)
+
+----------8.Review(CRUD)
+
+----------9.SocialNetwork(CRUD)
+
