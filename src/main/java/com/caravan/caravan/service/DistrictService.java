@@ -47,6 +47,7 @@ public class DistrictService {
         entity.setNameUz(dto.getNameUz());
         entity.setNameRu(dto.getNameRu());
         entity.setRegionId(UUID.fromString(dto.getRegionId()));
+        entity.setUpdatedDate(LocalDateTime.now());
         districtRepository.save(entity);
 
         return toDTO(entity);
