@@ -9,7 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "profile_entity")
+@Table(name = "profile")
 @Getter
 @Setter
 public class ProfileEntity extends BaseEntity {
