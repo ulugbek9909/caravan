@@ -1,5 +1,5 @@
 ----------1. Profile (CRUD)
-1.Guide acount(CRUD)
+1.Guide account(CRUD)
 
 ----------2.Trip(CRUD)(Guide)
 1.trip place
