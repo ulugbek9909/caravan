@@ -51,7 +51,7 @@ public class RegionService {
     public RegionDTO update(UUID id,RegionDTO dto){
         Optional<RegionEntity> optional = repository.findById(id);
         if (optional.isPresent()){
-            throw new ItemNotFound("region not found");
+            throw new ItemNotFoundException("region not found");
         }
 
         RegionEntity entity = new RegionEntity();
