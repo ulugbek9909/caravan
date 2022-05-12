@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -21,10 +19,13 @@ public class DistrictEntity extends BaseEntity{
     private String nameRu;
     @Column(name = "name_en")
     private String nameEn;
-    @Column(name = "nkey")
+    @Column(name = "key")
     private String key;
-    @Column(name = "region_id")
-    private RegionDTO regionId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id", insertable = false, updatable = false)
+    private RegionEntity regionId;
 
 
 }

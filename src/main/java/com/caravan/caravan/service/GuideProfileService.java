@@ -61,6 +61,15 @@ public class GuideProfileService {
         return dto;
     }
 
+    public Boolean deleteById(String uuid) {
+        GuideProfileEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
+
+        repository.delete(entity);
+
+        return true;
+    }
+
+
     private GuideProfileDTO toDTO(GuideProfileEntity entity) {
         var dto = new GuideProfileDTO();
 
