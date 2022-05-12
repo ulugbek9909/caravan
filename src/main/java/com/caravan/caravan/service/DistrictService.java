@@ -27,6 +27,7 @@ public class DistrictService {
         entity.setNameRu(dto.getNameRu());
         entity.setNameUz(dto.getNameUz());
         entity.setNameEn(dto.getNameEn());
+        entity.setRegionId(dto.getRegionId());
         entity.setCreatedDate(LocalDateTime.now());
         districtRepository.save(entity);
         dto.setId(entity.getId());
@@ -44,6 +45,7 @@ public class DistrictService {
         entity.setNameEn(dto.getNameEn());
         entity.setNameUz(dto.getNameUz());
         entity.setNameRu(dto.getNameRu());
+        entity.setRegionId(dto.getRegionId());
         districtRepository.save(entity);
 
         return toDTO(entity);
@@ -75,6 +77,7 @@ public class DistrictService {
         dto.setNameUz(entity.getNameUz());
         dto.setNameRu(entity.getNameRu());
         dto.setNameEn(entity.getNameEn());
+        entity.setRegionId(dto.getRegionId());
         dto.setCreateDate(entity.getCreatedDate());
         dto.setUpdateDate(entity.getUpdatedDate());
         return dto;
