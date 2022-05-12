@@ -22,7 +22,7 @@ public class AttachEntity  {
     @Column
     private String path;
     @Column
-    private String extention;
+    private String extension;
     @Column
     @CreationTimestamp
     private LocalDateTime createdDate;

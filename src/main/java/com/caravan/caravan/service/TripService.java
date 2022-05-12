@@ -70,6 +70,12 @@ public class TripService {
         return toDTO(entity);
     }
 
+    public TripDTO delete(UUID id) {
+        TripEntity entity = repository.getById(id);
+        TripDTO dto = toDTO(entity);
+        repository.delete(entity);
+        return dto;
+    }
 }
 /*    private UUID id;
     private String name;
