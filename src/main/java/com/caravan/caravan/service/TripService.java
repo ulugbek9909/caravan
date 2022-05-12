@@ -18,8 +18,10 @@ import java.util.UUID;
 public class TripService {
     private final TripRepository repository;
     private final GuideProfileRepository guideProfileRepository;
+    private final ConverterService converter;
 
     public TripDTO create(TripDTO dto) {
+        converter.convertToEntityAttribute(dto);
         TripEntity entity = new TripEntity();
         entity.setName(dto.getName());
         entity.setMaxPeople(dto.getMaxPeople());
