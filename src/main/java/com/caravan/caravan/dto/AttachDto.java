@@ -17,4 +17,5 @@ public class AttachDto  {
     private String extention;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private String url;
 }
