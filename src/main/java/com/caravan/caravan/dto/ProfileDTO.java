@@ -18,6 +18,7 @@ public class ProfileDTO {
     private UUID id;
     private String name;
     private String surname;
+    private String phoneNumber;
     private String email;
     private ProfileRole role;
     private ProfileStatus status;
