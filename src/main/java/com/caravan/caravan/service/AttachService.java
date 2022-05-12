@@ -35,6 +35,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AttachService {
+    private final ConverterService converter;
     @Autowired
     private AttachRepository attachRepository;
     @Value("${attach.upload.folder}")
