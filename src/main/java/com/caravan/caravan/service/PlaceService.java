@@ -25,17 +25,14 @@ public class PlaceService {
     public PlaceDTO create(PlaceDTO dto) {
         service.getById(dto.getId());
 
-        PlaceEntity entity = new PlaceEntity();
-        entity.setTitle(dto.getTitle());
-        entity.setDescription(entity.getDescription());
-        entity.setDistrictId(UUID.fromString(dto.getDistrictId()));
+        PlaceEntity entity = ConverterService.convertToEntity(dto);
 
         repository.save(entity);
-        return toDTO(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
     public PlaceDTO get(String districtId) {
-        return toDTO(getById(districtId));
+        return ConverterService.convertToDTO(getById(districtId));
     }
 
     public PageImpl<PlaceDTO> list(int page, int size) {
@@ -45,7 +42,7 @@ public class PlaceService {
         List<PlaceDTO> dtoList = new LinkedList<>();
 
         entityList.forEach(entity -> {
-            dtoList.add(toDTO(entity));
+            dtoList.add(ConverterService.convertToDTO(entity));
         });
         return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
     }
@@ -57,7 +54,7 @@ public class PlaceService {
         List<PlaceDTO> dtoList = new LinkedList<>();
 
         entityList.forEach(entity -> {
-            dtoList.add(toDTO(entity));
+            dtoList.add(ConverterService.convertToDTO(entity));
         });
         return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
     }
@@ -68,21 +65,13 @@ public class PlaceService {
         entity.setDescription(dto.getDescription());
 
         repository.save(entity);
-        return toDTO(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
     public Boolean delete(String id) {
         PlaceEntity entity = getById(id);
         repository.delete(entity);
         return true;
-    }
-
-    public PlaceDTO toDTO(PlaceEntity entity) {
-        PlaceDTO dto = new PlaceDTO();
-        dto.setTitle(entity.getTitle());
-        dto.setDescription(entity.getDescription());
-        dto.setTripCount(entity.getTripCount());
-        return dto;
     }
 
     public PlaceEntity getById(String id) {

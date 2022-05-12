@@ -1,19 +1,14 @@
 package com.caravan.caravan.service;
 
-import com.caravan.caravan.dto.GuideProfileDTO;
-import com.caravan.caravan.dto.ProfileDTO;
-import com.caravan.caravan.dto.RegionDTO;
-import com.caravan.caravan.dto.TripDTO;
-import com.caravan.caravan.entity.GuideProfileEntity;
-import com.caravan.caravan.entity.ProfileEntity;
-import com.caravan.caravan.entity.RegionEntity;
-import com.caravan.caravan.entity.TripEntity;
+import com.caravan.caravan.dto.*;
+import com.caravan.caravan.entity.*;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Converter;
 import javax.persistence.AttributeConverter;
+import java.util.UUID;
 
 @Service
 public class ConverterService {
@@ -90,5 +85,23 @@ public class ConverterService {
     public RegionEntity convertToEntityAttribute(RegionDTO tripDTO) {
         return null;
     }
+
+
+    public static PlaceEntity convertToEntity(PlaceDTO dto) {
+        PlaceEntity entity = new PlaceEntity();
+        entity.setTitle(dto.getTitle());
+        entity.setDescription(entity.getDescription());
+        entity.setDistrictId(UUID.fromString(dto.getDistrictId()));
+        return entity;
+    }
+
+    public static PlaceDTO convertToDTO(PlaceEntity entity) {
+        PlaceDTO dto = new PlaceDTO();
+        dto.setTitle(entity.getTitle());
+        dto.setDescription(entity.getDescription());
+        dto.setTripCount(entity.getTripCount());
+        return dto;
+    }
+
 
 }
