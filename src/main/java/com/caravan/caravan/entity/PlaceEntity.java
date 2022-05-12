@@ -23,10 +23,10 @@ public class PlaceEntity {
     private String description;
 
     @Column(name = "district_id")
-    private String districtId;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "district_id", updatable = false, insertable = false)
-//    private DistrictEntity district;
+    private UUID districtId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "district_id", updatable = false, insertable = false)
+    private DistrictEntity district;
 
     @Column
     private Integer tripCount = 0;

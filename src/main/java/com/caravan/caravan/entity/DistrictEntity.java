@@ -6,12 +6,12 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "district")
-@Slf4j
 public class DistrictEntity extends BaseEntity{
     @Column(name = "name_uz")
     private String nameUz;
@@ -23,9 +23,11 @@ public class DistrictEntity extends BaseEntity{
     private String key;
 
 
+    @Column(name = "region_id")
+    private UUID regionId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", insertable = false, updatable = false)
-    private RegionEntity regionId;
+    private RegionEntity region;
 
 
 }
