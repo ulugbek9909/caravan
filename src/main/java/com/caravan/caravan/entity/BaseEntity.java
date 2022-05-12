@@ -22,11 +22,7 @@ public class BaseEntity {
     @CreationTimestamp
     private LocalDateTime createdDate;
 
-
     @Column
     private LocalDateTime updatedDate;
-
-
-
 
 }
