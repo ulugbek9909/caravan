@@ -24,60 +24,45 @@ public class ProfileService {
 
     public ProfileDTO create(ProfileDTO dto) {
         Optional<ProfileEntity> profile = repository.findByPhoneNumber(dto.getPhoneNumber());
+
         if (profile.isPresent()) throw new ItemAlreadyExistsException("item all ready exists!");
 
-        ProfileEntity entity = new ProfileEntity();
-        entity.setName(dto.getName());
-        entity.setStatus(ProfileStatus.ACTIVE);
-        entity.setSurname(dto.getSurname());
-        entity.setRole(ProfileRole.TOURIST);
-        entity.setPhoneNumber(dto.getPhoneNumber());
-        entity.setGender(dto.getGender());
+        ProfileEntity entity = ConverterService.convertToEntityAttribute(dto);
+
         repository.save(entity);
-        return toDTOsimple(entity);
+
+        return ConverterService.convertToDTO(entity);
     }
 
-    public ProfileDTO delete(UUID id){
-        ProfileEntity entity = repository.findById(id).orElseThrow(()->{
+    public ProfileDTO delete(UUID id) {
+        ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("item not found!!");
         });
         repository.deleteById(id);
-        return toDTOsimple(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
-    public List<ProfileDTO> getList(){
-        return repository.findAll().stream().map(this::toDTOsimple).toList();
+    public List<ProfileDTO> getList() {
+        return repository.findAll().stream().map(ConverterService::convertToDTO).toList();
     }
 
-    public ProfileDTO getById(UUID id ){
-        ProfileEntity entity = repository.findById(id).orElseThrow(()->{
+    public ProfileDTO getById(UUID id) {
+        ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("item not found!!");
         });
-        return toDTOsimple(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
-    public ProfileDTO update(UUID id,ProfileDTO dto){
-        ProfileEntity entity = repository.findById(id).orElseThrow(()->{
+    public ProfileDTO update(UUID id, ProfileDTO dto) {
+        ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("item not found!!");
         });
         entity.setGender(dto.getGender());
         entity.setEmail(dto.getEmail());
         entity.setName(entity.getName());
         repository.save(entity);
-        return toDTOsimple(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
-    public ProfileDTO toDTOsimple(ProfileEntity entity) {
-        ProfileDTO dto = new ProfileDTO();
-        dto.setGender(entity.getGender());
-        dto.setName(entity.getName());
-        dto.setRole(entity.getRole());
-        dto.setStatus(entity.getStatus());
-        dto.setSurname(entity.getSurname());
-        dto.setEmail(entity.getEmail());
-        dto.setPhoneNumber(entity.getPhoneNumber());
-        dto.setId(entity.getId());
-        return dto;
 
-    }
 }
