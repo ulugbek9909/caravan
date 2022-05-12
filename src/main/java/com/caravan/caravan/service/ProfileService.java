@@ -53,16 +53,4 @@ public class ProfileService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public ProfileDTO update(UUID id, ProfileDTO dto) {
-        ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
-            throw new ItemNotFoundException("item not found!!");
-        });
-        entity.setGender(dto.getGender());
-        entity.setEmail(dto.getEmail());
-        entity.setName(entity.getName());
-        repository.save(entity);
-        return ConverterService.convertToDTO(entity);
-    }
-
-
 }
