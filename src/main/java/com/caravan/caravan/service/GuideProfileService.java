@@ -2,7 +2,6 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.GuideProfileDTO;
 import com.caravan.caravan.entity.GuideProfileEntity;
-import com.caravan.caravan.entity.ProfileEntity;
 import com.caravan.caravan.exceptions.ItemAlreadyExistsException;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.GuideProfileRepository;
@@ -10,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -44,6 +43,22 @@ public class GuideProfileService {
     public GuideProfileDTO getById(String uuid) {
         GuideProfileEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
         return toDTO(entity);
+    }
+
+    public GuideProfileDTO update(GuideProfileDTO dto, String uuid) {
+        GuideProfileEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
+
+        entity.setProfileId(entity.getProfileId());
+        entity.setPhoneNumber(entity.getPhoneNumber());
+        entity.setIsHiring(dto.getIsHiring());
+        entity.setGuideRate(dto.getGuideRate());
+        entity.setUpdatedDate(LocalDateTime.now());
+        entity.setContent(dto.getContent());
+
+        repository.save(entity);
+        dto.setCreatedDate(entity.getCreatedDate());
+
+        return dto;
     }
 
     private GuideProfileDTO toDTO(GuideProfileEntity entity) {
