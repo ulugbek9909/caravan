@@ -2,16 +2,22 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.TripDTO;
 import com.caravan.caravan.entity.TripEntity;
+import com.caravan.caravan.repository.GuideProfileRepository;
 import com.caravan.caravan.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class TripService {
     private final TripRepository repository;
+    private final GuideProfileRepository guideProfileRepository;
 
     public TripDTO create(TripDTO dto) {
         TripEntity entity = new TripEntity();
@@ -19,16 +25,51 @@ public class TripService {
         entity.setMaxPeople(dto.getMaxPeople());
         entity.setMinPeople(dto.getMinPeople());
         entity.setDescription(dto.getDescription());
-        entity.setGuideId(dto.getGuideId());
+
+        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+
         entity.setPhoneNumber(dto.getPhoneNumber());
-        TripEntity save = repository.save(entity);
-        dto.setId(save.getId());
+        repository.save(entity);
+        dto.setId(entity.getId());
         return dto;
     }
 
-    private TripDTO toDTO(TripEntity entity) {
-        return null;
+
+    public List<TripDTO> list() {
+        List<TripDTO> tripList = new LinkedList<>();
+        for (TripEntity entity : repository.findAll()) {
+            tripList.add(toDTO(entity));
+        }
+
+        return tripList;
     }
+
+    private TripDTO toDTO(TripEntity entity) {
+        TripDTO dto = new TripDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setMaxPeople(entity.getMaxPeople());
+        dto.setMinPeople(entity.getMinPeople());
+        dto.setGuideId(entity.getGuideId().getId());
+        dto.setPhoneNumber(dto.getPhoneNumber());
+        return dto;
+    }
+
+    public TripDTO getById(UUID id) {
+        return toDTO(repository.getById(id));
+    }
+
+    public TripDTO update(UUID id, TripDTO dto) {
+        TripEntity entity = repository.getById(id);
+        entity.setName(dto.getName());
+        entity.setMaxPeople(dto.getMaxPeople());
+        entity.setMinPeople(dto.getMinPeople());
+        entity.setDescription(dto.getDescription());
+        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+        entity.setPhoneNumber(dto.getPhoneNumber());
+        return toDTO(entity);
+    }
+
 }
 /*    private UUID id;
     private String name;

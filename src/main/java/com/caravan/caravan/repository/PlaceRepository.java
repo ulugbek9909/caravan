@@ -9,10 +9,10 @@ import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 import java.util.UUID;
 
-public interface PlaceRepository extends JpaRepository<PlaceEntity, String> {
+public interface PlaceRepository extends JpaRepository<PlaceEntity, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "update PlaceEntity set tripCount = tripCount + 1 where UUID =:UUID")
+    @Query(value = "update PlaceEntity set tripCount = tripCount + 1 where id =:id")
     void updateTripCount(@Param("UUID") UUID id);
 }

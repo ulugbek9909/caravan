@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "place")
@@ -13,7 +14,7 @@ public class PlaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String UUID;
+    private UUID id;
 
     @Column(nullable = false)
     private String title;
@@ -28,5 +29,5 @@ public class PlaceEntity {
 //    private DistrictEntity district;
 
     @Column
-    private Integer tripCount;
+    private Integer tripCount = 0;
 }

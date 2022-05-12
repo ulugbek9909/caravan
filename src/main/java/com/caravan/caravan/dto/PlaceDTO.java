@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDTO {
 
-    private String UUID;
+    private String id;
 
     @NotBlank(message = "Title required")
     private String title;

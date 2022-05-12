@@ -2,13 +2,16 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.GuideProfileDTO;
 import com.caravan.caravan.entity.GuideProfileEntity;
-import com.caravan.caravan.exceptions.ItemAlreadyExistsExceptions;
+import com.caravan.caravan.entity.ProfileEntity;
+import com.caravan.caravan.exceptions.ItemAlreadyExistsException;
+import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.GuideProfileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -20,7 +23,7 @@ public class GuideProfileService {
         var optional = repository.findByPhoneNumber(dto.getPhoneNumber());
 
         if (optional.isPresent())
-            throw new ItemAlreadyExistsExceptions("Guide already exists!");
+            throw new ItemAlreadyExistsException("Guide already exists!");
 
         var entity = new GuideProfileEntity();
 
@@ -34,6 +37,26 @@ public class GuideProfileService {
         dto.setId(entity.getId());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
+
+        return dto;
+    }
+
+    public GuideProfileDTO getById(String uuid) {
+        GuideProfileEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
+        return toDTO(entity);
+    }
+
+    private GuideProfileDTO toDTO(GuideProfileEntity entity) {
+        var dto = new GuideProfileDTO();
+
+        dto.setProfileId(entity.getProfileId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setContent(entity.getContent());
+        dto.setIsHiring(entity.getIsHiring());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setId(entity.getId());
+        dto.setUpdatedDate(entity.getUpdatedDate());
+        dto.setGuideRate(entity.getGuideRate());
 
         return dto;
     }
