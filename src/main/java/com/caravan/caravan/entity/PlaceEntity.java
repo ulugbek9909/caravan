@@ -28,5 +28,5 @@ public class PlaceEntity {
 //    private DistrictEntity district;
 
     @Column
-    private Integer tripCount;
+    private Integer tripCount = 0;
 }
