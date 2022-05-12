@@ -1,4 +1,4 @@
-package com.caravan.repository;
+package com.caravan.caravan.repository;
 
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.entity.RegionEntity;
