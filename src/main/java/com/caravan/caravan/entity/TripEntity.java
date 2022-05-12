@@ -1,4 +1,4 @@
-package com.caravan.entity;
+package com.caravan.caravan.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

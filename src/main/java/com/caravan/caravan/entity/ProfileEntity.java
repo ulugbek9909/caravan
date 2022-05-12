@@ -1,4 +1,4 @@
-package com.caravan.entity;
+package com.caravan.caravan.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

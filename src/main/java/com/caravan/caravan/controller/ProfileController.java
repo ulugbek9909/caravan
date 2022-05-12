@@ -1,4 +1,4 @@
-package com.caravan.controller;
+package com.caravan.caravan.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

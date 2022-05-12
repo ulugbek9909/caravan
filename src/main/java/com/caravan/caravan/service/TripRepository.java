@@ -1,6 +1,6 @@
-package com.caravan.service;
+package com.caravan.caravan.service;
 
-import com.caravan.entity.TripEntity;
+import com.caravan.caravan.entity.TripEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
