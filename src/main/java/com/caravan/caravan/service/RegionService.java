@@ -2,13 +2,11 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.entity.RegionEntity;
-import com.caravan.caravan.exceptions.ItemNotFound;
 import com.caravan.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
