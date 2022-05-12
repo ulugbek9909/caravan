@@ -35,10 +35,10 @@ public class PlaceService {
         return dto;
     }
 
-    public PlaceEntity getByUUID(String uuid) {
-        return repository.findById(uuid)
+    public PlaceEntity getById(String id) {
+        return repository.findById(UUID.fromString(id))
                 .orElseThrow(() -> {
-                    log.warn("Not found {}", uuid);
+                    log.warn("Not found {}", id);
                     throw new ItemNotFoundException("Not found!");
                 });
     }
