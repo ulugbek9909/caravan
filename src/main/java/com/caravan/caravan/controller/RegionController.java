@@ -29,16 +29,13 @@ public class RegionController {
     public ResponseEntity<List<RegionDTO>> getall(){
         return ResponseEntity.ok(service.getregionDTOList());
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(UUID id,RegionDTO dto){
         return ResponseEntity.ok( service.update(id,dto));
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(UUID id){
         service.deleteById(id);
         return ResponseEntity.ok().build();
     }
-
 }
