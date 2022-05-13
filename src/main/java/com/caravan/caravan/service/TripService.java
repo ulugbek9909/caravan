@@ -2,7 +2,7 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.TripDTO;
 import com.caravan.caravan.entity.TripEntity;
-import com.caravan.caravan.repository.GuideProfileRepository;
+import com.caravan.caravan.repository.GuideRepository;
 import com.caravan.caravan.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @Slf4j
 public class TripService {
     private final TripRepository repository;
-    private final GuideProfileRepository guideProfileRepository;
+    private final GuideRepository guideProfileRepository;
     private final ConverterService converter;
 
     public TripDTO create(TripDTO dto) {
@@ -28,7 +28,7 @@ public class TripService {
         entity.setMinPeople(dto.getMinPeople());
         entity.setDescription(dto.getDescription());
 
-        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+        //entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
 
         entity.setPhoneNumber(dto.getPhoneNumber());
         repository.save(entity);
@@ -52,7 +52,7 @@ public class TripService {
         dto.setName(entity.getName());
         dto.setMaxPeople(entity.getMaxPeople());
         dto.setMinPeople(entity.getMinPeople());
-        dto.setGuideId(entity.getGuideId().getId());
+        //dto.setGuideId(entity.getGuideId().getId());
         dto.setPhoneNumber(dto.getPhoneNumber());
         return dto;
     }
@@ -67,7 +67,7 @@ public class TripService {
         entity.setMaxPeople(dto.getMaxPeople());
         entity.setMinPeople(dto.getMinPeople());
         entity.setDescription(dto.getDescription());
-        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+        //entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
         entity.setPhoneNumber(dto.getPhoneNumber());
         return toDTO(entity);
     }
