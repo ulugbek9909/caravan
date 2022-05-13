@@ -29,7 +29,7 @@ public class DistrictController {
 //    }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id) {
+    public ResponseEntity<?> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(districtService.getById(id));
     }
 
