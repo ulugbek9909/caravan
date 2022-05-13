@@ -20,10 +20,10 @@ public class PlaceService {
 
     private final PlaceRepository repository;
 
-    private final DistrictService service;
+    private final DistrictService districtService;
 
     public PlaceDTO create(PlaceDTO dto) {
-        service.getById(dto.getId());
+        districtService.getById(dto.getId());
 
         PlaceEntity entity = ConverterService.convertToEntity(dto);
 

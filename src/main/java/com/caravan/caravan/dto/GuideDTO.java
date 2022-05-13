@@ -26,6 +26,6 @@ public class GuideDTO extends BaseDTO {
 
     private Double guideRate;
 
-    private String profileId;
+    private Long profileId;
 
 }

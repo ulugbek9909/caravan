@@ -2,7 +2,7 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.TripDTO;
 import com.caravan.caravan.entity.TripEntity;
-import com.caravan.caravan.repository.GuideProfileRepository;
+import com.caravan.caravan.repository.GuideRepository;
 import com.caravan.caravan.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @Slf4j
 public class TripService {
     private final TripRepository repository;
-    private final GuideProfileRepository guideProfileRepository;
+    private final GuideRepository guideProfileRepository;
     private final ConverterService converter;
 
     public TripDTO create(TripDTO dto) {
