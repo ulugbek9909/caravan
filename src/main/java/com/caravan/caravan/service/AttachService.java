@@ -133,7 +133,7 @@ public class AttachService {
 
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
-        dto.setId(entity.getId().toString());
+        dto.setId(entity.getId());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setOriginalName(entity.getOriginalName());
         dto.setPath(entity.getPath());
