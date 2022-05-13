@@ -32,6 +32,7 @@ public class ConverterService {
         dto.setEmail(entity.getEmail());
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setId(entity.getId());
+        dto.setPhotoId(entity.getPhotoId());
         return dto;
     }
 
@@ -41,7 +42,7 @@ public class ConverterService {
         dto.setId(entity.getId());
         dto.setProfileId(entity.getProfileId());
         dto.setBiography(entity.getBiography());
-        dto.setIsHiring(entity.getIsHiring());
+        dto.setIsHiring(entity.getActivity());
         dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
         dto.setCreatedDate(entity.getCreatedDate());

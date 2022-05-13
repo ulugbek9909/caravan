@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Setter
 @Getter
@@ -31,6 +32,8 @@ public class ProfileDTO {
     @NotBlank(message = "Phone Number is required")
     private String phoneNumber;
 
+    private String code;
+
     private ProfileRole role;
 
     private ProfileStatus status;
@@ -41,7 +44,7 @@ public class ProfileDTO {
 
     private LocalDateTime updatedDate;
 
-    private String photoId; // ATTACH UUID
+    private UUID photoId; // ATTACH UUID
     private AttachDTO photo;
 
 }
