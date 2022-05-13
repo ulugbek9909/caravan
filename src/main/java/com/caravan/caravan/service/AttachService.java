@@ -44,33 +44,38 @@ public class AttachService {
     private String domainName;
 
     public AttachDTO upload(MultipartFile file) {
+        AttachEntity entity = new AttachEntity();
         String pathFolder = getYmDString();
-        File folder = new File(attachFolder + pathFolder);
-        if (folder.exists()) {
+
+        File folder = new File(attachFolder + "/" + pathFolder);
+        if (!folder.exists()) {
             folder.mkdirs();
         }
 
-        String extension = getExtension(file.getOriginalFilename());
-        AttachEntity entity = saveAttach(pathFolder, extension, file);
-        AttachDTO dto = toDTO(entity);
-
         try {
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(attachFolder + pathFolder + "/" + entity.getId() + "." + extension);
-            Files.write(path, bytes);
-        } catch (IOException e) {
-            delete(entity.getId().toString());
-            e.printStackTrace();
-        }
+            String extension = getExtension(file.getOriginalFilename());
 
-        return dto;
+            byte[] bytes = file.getBytes();
+
+            entity = saveAttach(entity, pathFolder, extension, file);
+
+            Path url = Paths.get(folder.getAbsolutePath() + "/" + entity.getId() + "." + extension);
+
+            Files.write(url, bytes);
+
+            return toDTO(entity);
+        } catch (IOException | RuntimeException e) {
+            log.warn("Cannot Upload");
+            delete(entity.getId().toString());
+            throw new AppBadRequestException(e.getMessage());
+        }
     }
 
-    public byte[] open_general(String key) {
+    public byte[] open_general(String id) {
         byte[] data;
         try {
-            AttachEntity entity = get(key);
-            String path = entity.getPath() + "/" + key + "." + entity.getExtension();
+            AttachEntity entity = get(id);
+            String path = entity.getPath() + "/" + id + "." + entity.getExtension();
             Path file = Paths.get(attachFolder + path);
             data = Files.readAllBytes(file);
             return data;
@@ -121,8 +126,7 @@ public class AttachService {
     }
 
 
-    public AttachEntity saveAttach(String pathFolder, String extension, MultipartFile file) {
-        AttachEntity entity = new AttachEntity();
+    public AttachEntity saveAttach(AttachEntity entity, String pathFolder, String extension, MultipartFile file) {
         entity.setPath(pathFolder);
         entity.setOriginalName(file.getOriginalFilename());
         entity.setExtension(extension);
@@ -137,7 +141,7 @@ public class AttachService {
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setOriginalName(entity.getOriginalName());
         dto.setPath(entity.getPath());
-        dto.setUrl(domainName + "/attach/download/" + entity.getId());
+        dto.setUrl(domainName + "attach/download/" + entity.getId());
         return dto;
     }
 
