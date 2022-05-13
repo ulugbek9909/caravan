@@ -22,7 +22,7 @@ public class Admin extends BaseEntity{
     private String password;
 
     @Lob
-    @Column(name = "\"phoneNumber\"")
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
     @Lob
