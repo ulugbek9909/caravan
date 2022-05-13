@@ -32,7 +32,7 @@ public class RegionService {
         return dto;
     }
 
-    public RegionDTO getById(UUID id){
+    public RegionDTO getById(Long id){
         Optional<RegionEntity> optional = repository.findById(id);
         if (optional.isPresent()){
             throw new ItemNotFoundException("Region not found");
@@ -48,7 +48,7 @@ public class RegionService {
         }
         return regionDTOList;
     }
-    public RegionDTO update(UUID id,RegionDTO dto){
+    public RegionDTO update(Long id,RegionDTO dto){
         Optional<RegionEntity> optional = repository.findById(id);
         if (optional.isPresent()){
             throw new ItemNotFoundException("region not found");
@@ -71,6 +71,14 @@ public class RegionService {
         dto.setNameUz(entity.getNameUz());
         dto.setKey(entity.getKey());
         return dto;
+    }
+
+    public void deleteById(Long id){
+        Optional<RegionEntity> optional = repository.findById(id);
+        if (optional.isEmpty()){
+            throw new ItemNotFoundException("region not found");
+        }
+        repository.deleteById(id);
     }
 
 }
