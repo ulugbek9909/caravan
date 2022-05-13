@@ -27,7 +27,7 @@ public class GuideService {
         entity.setProfileId(dto.getProfileId());
         entity.setGuideRate(0d);
         entity.setBiography(dto.getBiography());
-        entity.setIsHiring(GuideStatus.ACTIVE);
+        entity.setActivity(GuideStatus.ACTIVE);
 
         repository.save(entity);
 

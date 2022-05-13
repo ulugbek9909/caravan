@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequestMapping("/region")
 public class RegionController {
 
-    RegionService service;
+    private final RegionService service;
 
     @PostMapping("/create")
     public ResponseEntity<?> create(RegionDTO dto){
