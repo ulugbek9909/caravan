@@ -16,13 +16,15 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GuideDTO extends BaseDTO {
 
-    @NotNull(message = "Phone Number required")
+    // TODO: 14-May-22 optional boladigan boldi
+//    @NotNull(message = "Phone Number required")
     private String secondPhoneNumber;
 
-    @NotNull(message = "Biography required")
+    // TODO: 14-May-22 optional boladigan boldi
+//    @NotNull(message = "Biography required")
     private String biography;
 
-    private GuideStatus isHiring;
+    private GuideStatus activity;
 
     private Double guideRate;
 
