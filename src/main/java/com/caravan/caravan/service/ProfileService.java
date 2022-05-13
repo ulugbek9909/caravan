@@ -34,7 +34,7 @@ public class ProfileService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public ProfileDTO delete(UUID id) {
+    public ProfileDTO delete(Long id) {
         ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("item not found!!");
         });
@@ -46,11 +46,23 @@ public class ProfileService {
         return repository.findAll().stream().map(ConverterService::convertToDTO).toList();
     }
 
-    public ProfileDTO getById(UUID id) {
+    public ProfileDTO getById(Long id) {
         ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("item not found!!");
         });
         return ConverterService.convertToDTO(entity);
     }
+
+    public ProfileDTO update(Long id, ProfileDTO dto) {
+        ProfileEntity entity = repository.findById(id).orElseThrow(() -> {
+            throw new ItemNotFoundException("item not found!!");
+        });
+        entity.setGender(dto.getGender());
+        entity.setEmail(dto.getEmail());
+        entity.setName(entity.getName());
+        repository.save(entity);
+        return ConverterService.convertToDTO(entity);
+    }
+
 
 }

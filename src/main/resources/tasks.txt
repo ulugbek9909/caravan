@@ -3,7 +3,7 @@
 	1. Registration (with phone verification)
 
 	2. Authorization
-	     id,name,surname,email,phone,main_photo (url)
+	     id,name,surname,email,phone,main_photo (url) //email(optional)(verification required), main_phono (optional)
 
 	3. Update phone (with sms code)
 
@@ -11,7 +11,7 @@
 
 	5. Update Profile Attach (main_photo) (delete old attach)
 
-	6. Get Profile Detail (id,name,surname,email,phone_number,main_photo((url))) //email(optional)(verification required), main_phono (optional)
+	6. Get Profile Detail (id,name,surname,email,phone_number,main_photo((url)))
 
 	7. Get Profile Detail by phone_number.
 

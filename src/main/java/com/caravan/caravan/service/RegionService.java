@@ -1,4 +1,5 @@
 package com.caravan.caravan.service;
+
 import com.caravan.caravan.dto.RegionDTO;
 import com.caravan.caravan.entity.RegionEntity;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
@@ -6,6 +7,7 @@ import com.caravan.caravan.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +32,9 @@ public class RegionService {
         return dto;
     }
 
-    public RegionDTO getById(UUID id){
+    public RegionDTO getById(Long id){
         Optional<RegionEntity> optional = repository.findById(id);
-        if (!optional.isPresent()){
+        if (optional.isPresent()){
             throw new ItemNotFoundException("Region not found");
         }
         return toDTO(optional.get());
@@ -46,10 +48,9 @@ public class RegionService {
         }
         return regionDTOList;
     }
-
-    public RegionDTO update(UUID id,RegionDTO dto){
+    public RegionDTO update(Long id,RegionDTO dto){
         Optional<RegionEntity> optional = repository.findById(id);
-        if (!optional.isPresent()){
+        if (optional.isPresent()){
             throw new ItemNotFoundException("region not found");
         }
 
@@ -62,14 +63,6 @@ public class RegionService {
 
     }
 
-    public void deleteById(UUID id){
-        Optional<RegionEntity> optional = repository.findById(id);
-        if (!optional.isPresent()){
-            throw new ItemNotFoundException("region not found");
-        }
-        repository.deleteById(id);
-    }
-
     public RegionDTO toDTO(RegionEntity entity){
         RegionDTO dto = new RegionDTO();
         dto.setId(entity.getId());
@@ -78,6 +71,14 @@ public class RegionService {
         dto.setNameUz(entity.getNameUz());
         dto.setKey(entity.getKey());
         return dto;
+    }
+
+    public void deleteById(Long id){
+        Optional<RegionEntity> optional = repository.findById(id);
+        if (optional.isEmpty()){
+            throw new ItemNotFoundException("region not found");
+        }
+        repository.deleteById(id);
     }
 
 }

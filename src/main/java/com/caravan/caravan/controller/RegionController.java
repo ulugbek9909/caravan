@@ -22,19 +22,19 @@ public class RegionController {
         return ResponseEntity.ok(service.create(dto));
     }
     @GetMapping("/get/{id}")
-    public ResponseEntity<?> getByid(@PathVariable("id") UUID uuid){
-        return ResponseEntity.ok( service.getById(uuid));
+    public ResponseEntity<?> getByid(@PathVariable("id") Long id){
+        return ResponseEntity.ok( service.getById(id));
     }
     @GetMapping("/getlist")
     public ResponseEntity<List<RegionDTO>> getall(){
         return ResponseEntity.ok(service.getregionDTOList());
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(UUID id,RegionDTO dto){
+    public ResponseEntity<?> update(Long id,RegionDTO dto){
         return ResponseEntity.ok( service.update(id,dto));
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(UUID id){
+    public ResponseEntity<?> delete(Long id){
         service.deleteById(id);
         return ResponseEntity.ok().build();
     }
