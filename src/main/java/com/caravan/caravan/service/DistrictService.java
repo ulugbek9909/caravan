@@ -64,7 +64,7 @@ public class DistrictService {
         return n > 0;
     }
 
-    public DistrictDTO getById(String id) {
+    public DistrictDTO getById(Long id) {
         DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
 
         if (entity == null) {
