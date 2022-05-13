@@ -39,6 +39,6 @@ public class RegionController {
     public ResponseEntity<?> delete(UUID id){
         service.deleteById(id);
         return ResponseEntity.ok().build();
-    }
 
+    }
 }
