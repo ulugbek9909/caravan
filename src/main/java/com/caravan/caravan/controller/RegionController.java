@@ -19,10 +19,12 @@ public class RegionController {
     public ResponseEntity<?> create(RegionDTO dto){
         return ResponseEntity.ok(service.create(dto));
     }
+
     @GetMapping("/get/{id}")
     public ResponseEntity<?> getByid(@PathVariable("id") UUID uuid){
         return ResponseEntity.ok( service.getById(uuid));
     }
+
     @GetMapping("/getlist")
     public ResponseEntity<List<RegionDTO>> getall(){
         return ResponseEntity.ok(service.getregionDTOList());
