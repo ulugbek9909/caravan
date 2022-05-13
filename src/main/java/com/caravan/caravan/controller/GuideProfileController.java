@@ -1,7 +1,7 @@
 package com.caravan.caravan.controller;
 
 import com.caravan.caravan.dto.GuideDTO;
-import com.caravan.caravan.service.GuideProfileService;
+import com.caravan.caravan.service.GuideService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @Slf4j
 @RequestMapping("/guide-profile")
 public class GuideProfileController {
-    private final GuideProfileService service;
+    private final GuideService service;
 
     @PostMapping("/")
     public ResponseEntity<GuideDTO> create(@RequestBody @Valid GuideDTO dto) {
