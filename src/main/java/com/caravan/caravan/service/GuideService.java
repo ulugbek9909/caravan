@@ -21,7 +21,6 @@ public class GuideService {
 
     public GuideDTO create(GuideDTO dto) {
         var entity = new GuideEntity();
-
         entity.setProfileId(dto.getProfileId());
         entity.setGuideRate(0d);
         entity.setBiography(dto.getBiography());
