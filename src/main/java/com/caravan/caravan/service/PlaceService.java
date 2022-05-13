@@ -31,7 +31,7 @@ public class PlaceService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public PlaceDTO get(String districtId) {
+    public PlaceDTO get(Long districtId) {
         return ConverterService.convertToDTO(getById(districtId));
     }
 
@@ -47,10 +47,10 @@ public class PlaceService {
         return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
     }
 
-    public PageImpl<PlaceDTO> listByDistrictId(int page, int size, String districtId) {
+    public PageImpl<PlaceDTO> listByDistrictId(int page, int size, Long districtId) {
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<PlaceEntity> entityList = repository.findAllByDistrictId(UUID.fromString(districtId), pageable);
+        Page<PlaceEntity> entityList = repository.findAllByDistrictId(districtId, pageable);
         List<PlaceDTO> dtoList = new LinkedList<>();
 
         entityList.forEach(entity -> {
@@ -59,7 +59,7 @@ public class PlaceService {
         return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
     }
 
-    public PlaceDTO update(String id, PlaceDTO dto) {
+    public PlaceDTO update(Long id, PlaceDTO dto) {
         PlaceEntity entity = getById(id);
         entity.setTitle(dto.getTitle());
         entity.setDescription(dto.getDescription());
@@ -68,14 +68,14 @@ public class PlaceService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public Boolean delete(String id) {
+    public Boolean delete(Long id) {
         PlaceEntity entity = getById(id);
         repository.delete(entity);
         return true;
     }
 
-    public PlaceEntity getById(String id) {
-        return repository.findById(UUID.fromString(id))
+    public PlaceEntity getById(Long id) {
+        return repository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Not found {}", id);
                     throw new ItemNotFoundException("Not found!");

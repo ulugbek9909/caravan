@@ -57,11 +57,11 @@ public class TripService {
         return dto;
     }
 
-    public TripDTO getById(UUID id) {
+    public TripDTO getById(Long id) {
         return toDTO(repository.getById(id));
     }
 
-    public TripDTO update(UUID id, TripDTO dto) {
+    public TripDTO update(Long id, TripDTO dto) {
         TripEntity entity = repository.getById(id);
         entity.setName(dto.getName());
         entity.setMaxPeople(dto.getMaxPeople());
@@ -72,7 +72,7 @@ public class TripService {
         return toDTO(entity);
     }
 
-    public TripDTO delete(UUID id) {
+    public TripDTO delete(Long id) {
         TripEntity entity = repository.getById(id);
         TripDTO dto = toDTO(entity);
         repository.delete(entity);
