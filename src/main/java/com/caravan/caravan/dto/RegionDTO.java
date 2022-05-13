@@ -1,16 +1,24 @@
 package com.caravan.caravan.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.util.UUID;
-
-@Data
+@Getter
+@Setter
+@ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RegionDTO {
 
-    private UUID id;
+    private Long id;
+
     private String nameUz;
+
     private String nameRu;
+
     private String nameEn;
+
     private String key;
 
 }

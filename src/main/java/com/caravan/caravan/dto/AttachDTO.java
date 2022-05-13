@@ -1,20 +1,33 @@
 package com.caravan.caravan.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
-@Data
+@Getter
+@Setter
 @ToString
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AttachDTO {
+
     private String id;
-    private String originName;
+
+    private String originalName;
+
     private Long size;
+
     private String path;
-    private String extention;
+
+    private String extension;
+
     private LocalDateTime createdDate;
+
     private LocalDateTime updatedDate;
+
     private String url;
+
+    public AttachDTO(String url) {
+        this.url = url;
+    }
 }

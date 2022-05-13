@@ -1,19 +1,20 @@
 package com.caravan.caravan.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "trip")
 public class TripEntity {
+
     @Id
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
-    @Lob
     @Column(name = "name")
     private String name;
 
@@ -23,15 +24,15 @@ public class TripEntity {
     @Column(name = "minPeople")
     private Integer minPeople;
 
-    @Lob
     @Column(name = "description")
     private String description;
 
     @Column(name = "guide_id")
+    private Long guideId;
+    @JoinColumn(name = "guide_id")
     @ManyToOne
-    private GuideEntity guideId;
+    private GuideEntity guide;
 
-    @Lob
     @Column(name = "phone_number")
     private String phoneNumber;
 

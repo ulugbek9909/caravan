@@ -25,7 +25,7 @@ public class GuideEntity extends BaseEntity {
     private Double guideRate;
 
     @Column(name = "profile_id")
-    private String profileId;
+    private Long profileId;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", insertable = false, updatable = false)
     private ProfileEntity profile;
