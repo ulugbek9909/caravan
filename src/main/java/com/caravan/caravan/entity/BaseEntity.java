@@ -12,15 +12,15 @@ import java.util.UUID;
 @Getter
 @Setter
 public class BaseEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column
     @CreationTimestamp
     private LocalDateTime createdDate;
-
 
     @Column
     private LocalDateTime updatedDate;

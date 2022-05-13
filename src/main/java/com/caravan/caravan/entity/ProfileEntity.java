@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "profile")
@@ -20,7 +21,7 @@ public class ProfileEntity extends BaseEntity {
     @Column(nullable = false)
     private String surname;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
     @Column
@@ -37,5 +38,11 @@ public class ProfileEntity extends BaseEntity {
     @Column
     @Enumerated(EnumType.STRING)
     private ProfileGender gender;
+
+    @Column(name = "photo_id")
+    private String photoId; // ATTACH UUID
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id", updatable = false, insertable = false)
+    private AttachEntity photo;
 
 }

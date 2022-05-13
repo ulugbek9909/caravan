@@ -29,7 +29,7 @@ public class TripEntity {
 
     @Column(name = "guide_id")
     @ManyToOne
-    private GuideProfileEntity guideId;
+    private GuideEntity guideId;
 
     @Lob
     @Column(name = "phone_number")
