@@ -41,7 +41,8 @@ public class GuideService {
     }
 
     public GuideDTO getById(String uuid) {
-        GuideEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
+        GuideEntity entity = repository.findById(UUID.fromString(uuid))
+                .orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
         return ConverterService.convertToDTO(entity);
     }
 
