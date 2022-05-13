@@ -28,7 +28,7 @@ public class TripService {
         entity.setMinPeople(dto.getMinPeople());
         entity.setDescription(dto.getDescription());
 
-        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+        //entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
 
         entity.setPhoneNumber(dto.getPhoneNumber());
         repository.save(entity);
@@ -52,7 +52,7 @@ public class TripService {
         dto.setName(entity.getName());
         dto.setMaxPeople(entity.getMaxPeople());
         dto.setMinPeople(entity.getMinPeople());
-        dto.setGuideId(entity.getGuideId().getId());
+        //dto.setGuideId(entity.getGuideId().getId());
         dto.setPhoneNumber(dto.getPhoneNumber());
         return dto;
     }
@@ -67,7 +67,7 @@ public class TripService {
         entity.setMaxPeople(dto.getMaxPeople());
         entity.setMinPeople(dto.getMinPeople());
         entity.setDescription(dto.getDescription());
-        entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
+        //entity.setGuideId(guideProfileRepository.getById(dto.getGuideId()));
         entity.setPhoneNumber(dto.getPhoneNumber());
         return toDTO(entity);
     }

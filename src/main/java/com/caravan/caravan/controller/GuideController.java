@@ -13,7 +13,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/guide-profile")
-public class GuideProfileController {
+public class GuideController {
     private final GuideService service;
 
     @PostMapping("/")
@@ -22,17 +22,17 @@ public class GuideProfileController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id) {
+    public ResponseEntity<?> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody @Valid GuideDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody @Valid GuideDTO dto) {
         return ResponseEntity.ok(service.update(dto, id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.deleteById(id));
     }
 }
