@@ -8,12 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public interface GuideRepository extends JpaRepository<GuideEntity, Long> {
 
+    Optional<GuideEntity> findByProfileId(Long profileId);
+
+
     @Transactional
     @Modifying
-    @Query("update GuideEntity set isHiring = :isHiring where id = :id")
-    int updateStatus(@Param("isHiring") GuideStatus isHiring, @Param("id") Long id);
+    @Query("update GuideEntity set activity = :activity where id = :id")
+    int updateStatus(@Param("activity") GuideStatus activity, @Param("id") Long id);
 
 }

@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class RegionService {
 
-    RegionRepository repository;
+    private final RegionRepository repository;
 
     public RegionDTO create(RegionDTO dto){
         RegionEntity entity= new RegionEntity();
