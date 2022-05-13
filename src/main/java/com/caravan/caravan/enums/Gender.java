@@ -1,5 +1,6 @@
 package com.caravan.caravan.enums;
 
-public enum ProfileGender {
+public enum Gender {
+
     MALE,FEMALE;
 }

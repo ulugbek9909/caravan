@@ -1,7 +1,7 @@
 package com.caravan.caravan.dto;
 
 import com.caravan.caravan.annotation.ValidEmail;
-import com.caravan.caravan.enums.ProfileGender;
+import com.caravan.caravan.enums.Gender;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,9 +10,7 @@ import lombok.Setter;
 
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -37,7 +35,7 @@ public class ProfileDTO {
 
     private ProfileStatus status;
 
-    private ProfileGender gender;
+    private Gender gender;
 
     private LocalDateTime createdDate;
 
