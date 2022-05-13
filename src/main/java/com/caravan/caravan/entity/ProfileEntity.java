@@ -1,13 +1,12 @@
 package com.caravan.caravan.entity;
 
-import com.caravan.caravan.enums.ProfileGender;
+import com.caravan.caravan.enums.Gender;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "profile")
@@ -37,7 +36,7 @@ public class ProfileEntity extends BaseEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private ProfileGender gender;
+    private Gender gender;
 
     @Column(name = "photo_id")
     private String photoId; // ATTACH UUID
