@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlerController {
-
     @ExceptionHandler({ItemAlreadyExistsException.class, ItemNotFoundException.class})
     public ResponseEntity<?> handleForbidden(RuntimeException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
