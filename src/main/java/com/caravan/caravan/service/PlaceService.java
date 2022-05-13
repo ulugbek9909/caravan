@@ -3,6 +3,7 @@ package com.caravan.caravan.service;
 import com.caravan.caravan.dto.PlaceDTO;
 import com.caravan.caravan.entity.PlaceEntity;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
+import com.caravan.caravan.repository.PlaceAttachRepository;
 import com.caravan.caravan.repository.PlaceRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +20,8 @@ import java.util.UUID;
 public class PlaceService {
 
     private final PlaceRepository repository;
-
     private final DistrictService districtService;
+    private final PlaceAttachRepository placeAttachRepository;
 
     public PlaceDTO create(PlaceDTO dto) {
         districtService.getById(dto.getId());
