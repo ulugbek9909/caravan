@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class GuideProfileService {
+public class GuideService {
     private final GuideProfileRepository repository;
 
     public GuideDTO create(GuideDTO dto) {
@@ -42,7 +42,7 @@ public class GuideProfileService {
 
     public GuideDTO getById(String uuid) {
         GuideEntity entity = repository.findById(UUID.fromString(uuid)).orElseThrow(() -> new ItemNotFoundException("Guide not Found!"));
-        return toDTO(entity);
+        return ConverterService.convertToDTO(entity);
     }
 
     public GuideDTO update(GuideDTO dto, String uuid) {
@@ -67,21 +67,5 @@ public class GuideProfileService {
         repository.delete(entity);
 
         return true;
-    }
-
-
-    private GuideDTO toDTO(GuideEntity entity) {
-        var dto = new GuideDTO();
-
-        dto.setProfileId(entity.getProfileId());
-        dto.setCreatedDate(entity.getCreatedDate());
-        dto.setBiography(entity.getBiography());
-        dto.setIsHiring(entity.getIsHiring());
-        dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
-        dto.setId(entity.getId());
-        dto.setUpdatedDate(entity.getUpdatedDate());
-        dto.setGuideRate(entity.getGuideRate());
-
-        return dto;
     }
 }
