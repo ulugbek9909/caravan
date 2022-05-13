@@ -89,7 +89,7 @@ public class ConverterService {
         PlaceEntity entity = new PlaceEntity();
         entity.setTitle(dto.getTitle());
         entity.setDescription(entity.getDescription());
-        entity.setDistrictId(UUID.fromString(dto.getDistrictId()));
+        entity.setDistrictId(dto.getDistrictId());
         return entity;
     }
 

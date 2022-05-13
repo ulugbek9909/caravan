@@ -4,7 +4,7 @@ import com.caravan.caravan.dto.GuideDTO;
 import com.caravan.caravan.entity.GuideEntity;
 import com.caravan.caravan.enums.GuideStatus;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
-import com.caravan.caravan.repository.GuideRepository;
+import com.caravan.caravan.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,10 @@ import java.time.LocalDateTime;
 @Slf4j
 public class GuideService {
     private final GuideRepository repository;
+    private final GuideRateRepository guideRateRepository;
+    private final GuidLocationRepository guidLocationRepository;
+    private final SocialNetworkRepository socialNetworkRepository;
+    private final ReviewGuideRepository reviewGuideRepository;
 
 
     public GuideDTO create(GuideDTO dto) {

@@ -33,19 +33,19 @@ public class TripController {
 
     //get Trip By Id
     @GetMapping("/get/{id}")
-    public ResponseEntity<?> getById(@PathVariable UUID id) {
+    public ResponseEntity<?> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     //update Trip by Id
     @PostMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable UUID id, TripDTO dto) {
+    public ResponseEntity<?> update(@PathVariable Long id, TripDTO dto) {
 
-        return ResponseEntity.ok(service.update(id,dto));
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @PostMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable UUID id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
 
         return ResponseEntity.ok(service.delete(id));
     }
