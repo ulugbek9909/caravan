@@ -3,7 +3,6 @@ package com.caravan.caravan.service;
 import com.caravan.caravan.dto.GuideDTO;
 import com.caravan.caravan.entity.GuideEntity;
 import com.caravan.caravan.enums.GuideStatus;
-import com.caravan.caravan.exceptions.ItemAlreadyExistsException;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.GuideRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -45,7 +43,7 @@ public class GuideService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public Boolean delete(Long id) {
+    public Boolean deleteById(Long id) {
         GuideEntity entity = getById(id);
         repository.delete(entity);
         return true;
@@ -55,7 +53,7 @@ public class GuideService {
         return repository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Not found {}", id);
-                    return new ItemNotFoundException("Guide not Found!")
+                    return new ItemNotFoundException("Guide not Found!");
                 });
     }
 }
