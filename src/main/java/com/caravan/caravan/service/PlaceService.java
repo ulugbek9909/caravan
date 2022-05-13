@@ -41,9 +41,7 @@ public class PlaceService {
         Page<PlaceEntity> entityList = repository.findAll(pageable);
         List<PlaceDTO> dtoList = new LinkedList<>();
 
-        entityList.forEach(entity -> {
-            dtoList.add(ConverterService.convertToDTO(entity));
-        });
+        entityList.forEach(entity -> dtoList.add(ConverterService.convertToDTO(entity)));
         return new PageImpl<>(dtoList, pageable, entityList.getTotalElements());
     }
 
