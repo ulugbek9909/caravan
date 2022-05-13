@@ -35,33 +35,34 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AttachService {
-    private final ConverterService converter;
-    @Autowired
-    private AttachRepository attachRepository;
+
+
+    private final AttachRepository attachRepository;
     @Value("${attach.upload.folder}")
     private String attachFolder;
     @Value("${server.domain.name}")
     private String domainName;
 
-    public AttachDTO upload(MultipartFile file){
-        String pathFolder=getYmDString();
-        File folder=new File(attachFolder+pathFolder);
-        if (folder.exists()){
+    public AttachDTO upload(MultipartFile file) {
+        String pathFolder = getYmDString();
+        File folder = new File(attachFolder + pathFolder);
+        if (folder.exists()) {
             folder.mkdirs();
         }
 
-        String key = UUID.randomUUID().toString();
-        String extension=getExtension(file.getOriginalFilename());
-        AttachEntity entity = saveAttach(key, pathFolder, extension, file);
+        String extension = getExtension(file.getOriginalFilename());
+        AttachEntity entity = saveAttach(pathFolder, extension, file);
         AttachDTO dto = toDTO(entity);
 
         try {
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(attachFolder + pathFolder + "/" + key + "." + extension);
+            Path path = Paths.get(attachFolder + pathFolder + "/" + entity.getId() + "." + extension);
             Files.write(path, bytes);
         } catch (IOException e) {
+            delete(entity.getId().toString());
             e.printStackTrace();
         }
+
         return dto;
     }
 
@@ -88,11 +89,11 @@ public class AttachService {
 
             if (resource.exists() || resource.isReadable()) {
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                                "attachment; filename=\"" + entity.getOriginName() + "\"")
+                                "attachment; filename=\"" + entity.getOriginalName() + "\"")
                         .body(resource);
 
             } else {
-                log.warn("cloud not read the file : {}", key );
+                log.warn("cloud not read the file : {}", key);
                 throw new RuntimeException("Could not read the file!");
             }
         } catch (MalformedURLException e) {
@@ -100,7 +101,7 @@ public class AttachService {
         }
     }
 
-    public AttachDTO update(MultipartFile fileDto, String key ){
+    public AttachDTO update(MultipartFile fileDto, String key) {
         if (delete(key)) {
             return upload(fileDto);
         } else throw new AppBadRequestException("Could not read the file!");
@@ -120,11 +121,10 @@ public class AttachService {
     }
 
 
-    public AttachEntity saveAttach(String key, String pathFolder, String extension, MultipartFile file) {
+    public AttachEntity saveAttach(String pathFolder, String extension, MultipartFile file) {
         AttachEntity entity = new AttachEntity();
-        entity.setId(key);
         entity.setPath(pathFolder);
-        entity.setOriginName(file.getOriginalFilename());
+        entity.setOriginalName(file.getOriginalFilename());
         entity.setExtension(extension);
         entity.setSize(file.getSize());
         attachRepository.save(entity);
@@ -133,14 +133,15 @@ public class AttachService {
 
     public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO dto = new AttachDTO();
-        dto.setId(entity.getId());
+        dto.setId(entity.getId().toString());
         dto.setCreatedDate(entity.getCreatedDate());
-        dto.setOriginName(entity.getOriginName());
+        dto.setOriginalName(entity.getOriginalName());
         dto.setPath(entity.getPath());
         dto.setUrl(domainName + "/attach/download/" + entity.getId());
         return dto;
     }
-    public List<AttachDTO>paginationList(int page, int size) {
+
+    public List<AttachDTO> paginationList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdDate"));
 
         List<AttachDTO> dtoList = new ArrayList<>();
@@ -157,7 +158,7 @@ public class AttachService {
         });
     }
 
-    public String getYmDString(){
+    public String getYmDString() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
         int day = Calendar.getInstance().get(Calendar.DATE);
@@ -165,8 +166,8 @@ public class AttachService {
         return year + "/" + month + "/" + day;
     }
 
-    public String getExtension(String fileName){
+    public String getExtension(String fileName) {
         int lastIndex = fileName.lastIndexOf(".");
-        return fileName.substring(lastIndex+1);
+        return fileName.substring(lastIndex + 1);
     }
 }
