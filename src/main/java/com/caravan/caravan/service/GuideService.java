@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Service
 @Slf4j
 public class GuideService {
-
     private final GuideRepository repository;
     private final GuideRateRepository guideRateRepository;
     private final GuidLocationRepository guidLocationRepository;
