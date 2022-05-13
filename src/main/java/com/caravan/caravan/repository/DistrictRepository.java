@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface DistrictRepository extends JpaRepository<DistrictEntity, Long> {
 
@@ -16,6 +15,6 @@ public interface DistrictRepository extends JpaRepository<DistrictEntity, Long> 
 
     @Transactional
     @Modifying
-    @Query("delete from ProfileEntity  where id = :id")
+    @Query("delete from DistrictEntity  where id = :id")
     int updateVisible(@Param("id") Integer id);
 }

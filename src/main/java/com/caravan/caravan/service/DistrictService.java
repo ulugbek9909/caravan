@@ -37,7 +37,7 @@ public class DistrictService {
 
     public DistrictDTO update(String id, DistrictDTO dto) {
 
-        DistrictEntity entity = districtRepository.findById(UUID.fromString(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
         if (entity == null) {
             throw new ItemNotFoundException("Id null");
         }
@@ -54,7 +54,7 @@ public class DistrictService {
     }
 
     public Boolean delete(String id) {
-        DistrictEntity entity = districtRepository.findById(UUID.fromString(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
 
         if (entity == null) {
             throw new ItemNotFoundException("Not Found!");
@@ -65,7 +65,7 @@ public class DistrictService {
     }
 
     public DistrictDTO getById(String id) {
-        DistrictEntity entity = districtRepository.findById(UUID.fromString(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
 
         if (entity == null) {
             throw new ItemNotFoundException("Id null");
