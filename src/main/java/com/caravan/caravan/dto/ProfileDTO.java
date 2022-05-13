@@ -19,22 +19,31 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfileDTO {
 
-    private UUID id;
-    @NotBlank(message = "name is required!!")
+    private Long id;
+
+    @NotBlank(message = "Name is required!!")
     private String name;
-    @NotBlank(message = "surname is required!!")
-    @Size(min = 4,max = 30,message = "surname size(4-30) required!!")
+
+    @NotBlank(message = "Surname is required!!")
     private String surname;
-    @ValidEmail(message = "email is required")
-    @Size(min = 4,max = 50,message = "email size(4-50)  valid!!")
+
+    @ValidEmail(message = "Email is required")
     private String email;
-    @NotBlank(message = "phone number is required")
+
+    @NotBlank(message = "Phone Number is required")
     private String phoneNumber;
+
     private ProfileRole role;
+
     private ProfileStatus status;
+
     private ProfileGender gender;
+
     private LocalDateTime createdDate;
+
     private LocalDateTime updatedDate;
 
-    //attach qolib ketgan
+    private String photoId; // ATTACH UUID
+    private AttachDTO photo;
+
 }

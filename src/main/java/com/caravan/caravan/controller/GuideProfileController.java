@@ -1,6 +1,6 @@
 package com.caravan.caravan.controller;
 
-import com.caravan.caravan.dto.GuideProfileDTO;
+import com.caravan.caravan.dto.GuideDTO;
 import com.caravan.caravan.service.GuideProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ public class GuideProfileController {
     private final GuideProfileService service;
 
     @PostMapping("/")
-    public ResponseEntity<GuideProfileDTO> create(@RequestBody @Valid GuideProfileDTO dto) {
+    public ResponseEntity<GuideDTO> create(@RequestBody @Valid GuideDTO dto) {
         return ResponseEntity.ok(service.create(dto));
     }
 
@@ -27,7 +27,7 @@ public class GuideProfileController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody @Valid GuideProfileDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody @Valid GuideDTO dto) {
         return ResponseEntity.ok(service.update(dto, id));
     }
 
