@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -65,7 +64,8 @@ public class DistrictService {
     }
 
     public DistrictDTO getById(Long id) {
-        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+        DistrictEntity entity = districtRepository.findById(id)
+                .orElseThrow(() -> new ItemNotFoundException("Not Found!"));
 
         if (entity == null) {
             throw new ItemNotFoundException("Id null");

@@ -23,7 +23,6 @@ public class PlaceController {
         log.info("/{id} {}", dto);
         return ResponseEntity.ok(service.create(dto));
     }
-
     @GetMapping("/")
     public ResponseEntity<?> list(@RequestParam(value = "page", defaultValue = "0") int page,
                                   @RequestParam(value = "size", defaultValue = "5") int size,

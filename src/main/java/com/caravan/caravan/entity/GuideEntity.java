@@ -19,7 +19,7 @@ public class GuideEntity extends BaseEntity {
     private String biography;
 
     @Column
-    private GuideStatus isHiring;
+    private GuideStatus activity;
 
     @Column
     private Double guideRate;

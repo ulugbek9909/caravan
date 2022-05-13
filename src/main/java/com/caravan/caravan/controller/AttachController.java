@@ -18,7 +18,7 @@ public class AttachController {
 
     @PostMapping("/upload")
     public ResponseEntity<?> create(@RequestParam("file") MultipartFile file) {
-        log.info("create : {}", file );
+        log.info("create : {}", file);
         return ResponseEntity.ok(attachService.upload(file));
     }
 

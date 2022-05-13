@@ -1,0 +1,35 @@
+1. Profile (USER tourist)
+        -- Auth
+	1. Registration (with phone verification)
+
+	2. Authorization
+	     id,name,surname,email,phone,main_photo (url)
+
+	3. Update phone (with sms code)
+
+	4. Update Profile Detail(name,surname,email)
+
+	5. Update Profile Attach (main_photo) (delete old attach)
+
+	6. Get Profile Detail (id,name,surname,email,phone_number,main_photo((url))) //email(optional)(verification required), main_phono (optional)
+
+	7. Get Profile Detail by phone_number.
+
+2. Guide
+
+    1. Add Info (bio, second_number) (Profile All Detail Required)-> second_number(optional) (email verification required)
+    2. Change Activity (Active,Busy)
+    3. Update (bio, second_number) ; Update Profile Detail in Guide by Profile Id;
+    4. Delete (Guide Account, Change Role Profile Id) -> by Month;
+
+Profile
+2. 4. 5. -> Sarvar
+6. 7. -> Sardor
+Guide
+1. 2. -> Javlon
+3. 4. -> Ulugbek
+
+///
+
+	2. Authorization
+	     id,name,surname,email,phone,main_photo (url) /// MuhammadAli

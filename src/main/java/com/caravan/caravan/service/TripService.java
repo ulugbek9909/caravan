@@ -2,15 +2,13 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.TripDTO;
 import com.caravan.caravan.entity.TripEntity;
-import com.caravan.caravan.repository.GuideRepository;
-import com.caravan.caravan.repository.TripRepository;
+import com.caravan.caravan.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +17,11 @@ public class TripService {
     private final TripRepository repository;
     private final GuideRepository guideProfileRepository;
     private final ConverterService converter;
+    private final TripPlaceRepository tripPlaceRepository;
+    private final TripPriceRepository tripPriceRepository;
+    private final TripRateRepository tripRateRepository;
+    private final ReviewTripRepository reviewTripRepository;
+    private final FacilityRepository facilityRepository;
 
     public TripDTO create(TripDTO dto) {
         converter.convertToEntityAttribute(dto);
@@ -57,11 +60,11 @@ public class TripService {
         return dto;
     }
 
-    public TripDTO getById(UUID id) {
+    public TripDTO getById(Long id) {
         return toDTO(repository.getById(id));
     }
 
-    public TripDTO update(UUID id, TripDTO dto) {
+    public TripDTO update(Long id, TripDTO dto) {
         TripEntity entity = repository.getById(id);
         entity.setName(dto.getName());
         entity.setMaxPeople(dto.getMaxPeople());
@@ -72,7 +75,7 @@ public class TripService {
         return toDTO(entity);
     }
 
-    public TripDTO delete(UUID id) {
+    public TripDTO delete(Long id) {
         TripEntity entity = repository.getById(id);
         TripDTO dto = toDTO(entity);
         repository.delete(entity);
