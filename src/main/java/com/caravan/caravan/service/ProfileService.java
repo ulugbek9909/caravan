@@ -60,6 +60,7 @@ public class ProfileService {
         entity.setGender(dto.getGender());
         entity.setEmail(dto.getEmail());
         entity.setName(entity.getName());
+
         repository.save(entity);
         return ConverterService.convertToDTO(entity);
     }
