@@ -1,24 +1,27 @@
 package com.caravan.caravan.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class DistrictDTO {
-    private UUID id;
+@ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DistrictDTO extends BaseDTO{
+
     private String nameUz;
+
     private String nameRu;
+
     private String nameEn;
+
     private String key;
-    private RegionDTO region;
-    private String regionId;
 
-    private LocalDateTime createDate;
-    private LocalDateTime updateDate;
-
+    private Long regionId;
 
 }

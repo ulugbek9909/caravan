@@ -1,28 +1,35 @@
 package com.caravan.caravan.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
-@Table
-@Data
+@Table(name = "attach")
+@Getter
+@Setter
 public class AttachEntity  {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
     @Column
-    private String originName;
+    private String originalName;
+
     @Column
     private Long size;
+
     @Column
     private String path;
+
     @Column
     private String extension;
+
     @Column
     @CreationTimestamp
     private LocalDateTime createdDate;

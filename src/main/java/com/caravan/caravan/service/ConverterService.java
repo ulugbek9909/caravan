@@ -6,8 +6,6 @@ import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Converter;
-import javax.persistence.AttributeConverter;
 import java.util.UUID;
 
 @Service
@@ -36,33 +34,33 @@ public class ConverterService {
         return dto;
     }
 
-    public static GuideProfileDTO convertToDTO(GuideProfileEntity entity) {
-        var dto = new GuideProfileDTO();
+    public static GuideDTO convertToDTO(GuideEntity entity) {
+        var dto = new GuideDTO();
 
-        dto.setProfileId(entity.getProfileId());
-        dto.setCreatedDate(entity.getCreatedDate());
-        dto.setContent(entity.getContent());
-        dto.setIsHiring(entity.getIsHiring());
-        dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setId(entity.getId());
-        dto.setUpdatedDate(entity.getUpdatedDate());
+        dto.setProfileId(entity.getProfileId());
+        dto.setBiography(entity.getBiography());
+        dto.setIsHiring(entity.getIsHiring());
+        dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setUpdatedDate(entity.getUpdatedDate());
 
         return dto;
     }
 
-    public static GuideProfileEntity convertToEntity(GuideProfileDTO dto) {
-        var entity = new GuideProfileEntity();
-
-        entity.setProfileId(dto.getProfileId());
-        entity.setCreatedDate(entity.getCreatedDate());
-        entity.setContent(dto.getContent());
-        entity.setIsHiring(dto.getIsHiring());
-        entity.setPhoneNumber(dto.getPhoneNumber());
-        entity.setGuideRate(dto.getGuideRate());
-
-        return entity;
-    }
+//    public static GuideEntity convertToEntity(GuideDTO dto) {
+//        var entity = new GuideEntity();
+//
+//        entity.setProfileId(dto.getProfileId());
+//        entity.setCreatedDate(entity.getCreatedDate());
+//        entity.setContent(dto.getContent());
+//        entity.setIsHiring(dto.getIsHiring());
+//        entity.setPhoneNumber(dto.getPhoneNumber());
+//        entity.setGuideRate(dto.getGuideRate());
+//
+//        return entity;
+//    }
 
     public static ProfileEntity convertToEntityAttribute(ProfileDTO dto) {
         ProfileEntity entity = new ProfileEntity();

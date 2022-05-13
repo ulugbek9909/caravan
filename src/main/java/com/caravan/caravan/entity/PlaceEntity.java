@@ -14,7 +14,7 @@ public class PlaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -23,7 +23,7 @@ public class PlaceEntity {
     private String description;
 
     @Column(name = "district_id")
-    private UUID districtId;
+    private Long districtId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_id", updatable = false, insertable = false)
     private DistrictEntity district;

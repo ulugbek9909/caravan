@@ -12,16 +12,16 @@ import java.util.UUID;
 @Getter
 @Setter
 public class BaseEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private UUID id;
+    protected Long id;
 
     @Column
     @CreationTimestamp
-    private LocalDateTime createdDate;
-
+    protected LocalDateTime createdDate;
 
     @Column
-    private LocalDateTime updatedDate;
+    protected LocalDateTime updatedDate;
 }
