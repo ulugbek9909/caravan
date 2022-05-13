@@ -1,6 +1,6 @@
 package com.caravan.caravan.entity;
 
-import com.caravan.caravan.enums.ProfileGender;
+import com.caravan.caravan.enums.Gender;
 import com.caravan.caravan.enums.ProfileRole;
 import com.caravan.caravan.enums.ProfileStatus;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class ProfileEntity extends BaseEntity {
     @Column(nullable = false)
     private String surname;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
     @Column
@@ -36,6 +36,12 @@ public class ProfileEntity extends BaseEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private ProfileGender gender;
+    private Gender gender;
+
+    @Column(name = "photo_id")
+    private String photoId; // ATTACH UUID
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id", updatable = false, insertable = false)
+    private AttachEntity photo;
 
 }

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDTO {
 
-    private String id;
+    private Long id;
 
     @NotBlank(message = "Title required")
     private String title;
@@ -22,7 +22,7 @@ public class PlaceDTO {
     private String description;
 
     @NotBlank(message = "District Id required")
-    private String districtId;
+    private Long districtId;
 
     private Integer tripCount;
 }
