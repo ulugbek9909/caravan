@@ -25,4 +25,9 @@ public class GuideRateEntity extends BaseEntity{
     private Integer mark;
 
 
+
+    //TODO create,getAvg
+
+
+
 }

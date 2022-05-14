@@ -18,12 +18,17 @@ public class ReviewTripEntity extends BaseEntity {
     private String content;
 
     @Column(name = "trip_id")
-    private UUID tripId;
+    private Long tripId;
 
     @Column(name = "profile_id")
-    private UUID profileId;
+    private Long profileId;
 
     @Column(name = "type")
     private String type;
+
+
+    //TODO  create,getTripId,delete(owner)
+
+    //TODO   for admin getProfileId,getTripId
 
 }

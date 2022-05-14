@@ -23,5 +23,7 @@ public class TripRateEntity extends BaseEntity{
     @Column(name = "mark")
     private Integer mark;
 
+    //TODO create,getAvg
+
 
 }

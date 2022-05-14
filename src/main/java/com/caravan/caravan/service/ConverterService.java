@@ -40,12 +40,24 @@ public class ConverterService {
         dto.setId(entity.getId());
         dto.setProfileId(entity.getProfileId());
         dto.setBiography(entity.getBiography());
-        dto.setIsHiring(entity.getIsHiring());
+        dto.setActivity(entity.getActivity());
         dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
 
+        return dto;
+    }
+
+    public static ReviewTripDTO convertToDTO(ReviewTripEntity entity) {
+        var dto = new ReviewTripDTO();
+
+        dto.setId(entity.getId());
+        dto.setProfileId(entity.getProfileId());
+        dto.setTripId(entity.getTripId());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setType(entity.getType());
+        dto.setContent(entity.getContent());
         return dto;
     }
 
