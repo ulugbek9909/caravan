@@ -17,7 +17,7 @@ public class DistrictController {
 
     private final DistrictService service;
 
-    // TODO: 14-May-22 DISTRICT to'liq emas 
+    // TODO: 14-May-22 DISTRICT to'liq emas
 //    @PostMapping("/create")
 //    public ResponseEntity<?> create(@RequestBody @Valid DistrictDTO dto) {
 //        return ResponseEntity.ok(service.create(dto));
