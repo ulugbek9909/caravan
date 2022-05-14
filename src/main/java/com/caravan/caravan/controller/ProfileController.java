@@ -23,7 +23,7 @@ public class ProfileController {
 
     //get by id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Long id, HttpServletRequest request) {
+    public ResponseEntity<?> getById(@PathVariable("id") Long id, HttpServletRequest request) {  //Required token
         Long profileId = JwtUtil.getIdFromHeader(request);
         return ResponseEntity.ok(service.getById(id));
     }
