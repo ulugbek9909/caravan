@@ -16,7 +16,7 @@ public interface ProfileRepository extends JpaRepository<ProfileEntity, Long> {
     @Transactional
     @Modifying
     @Query("update ProfileEntity set photoId = :photoId where id = :id")
-    int updateImage(@Param("phonetoId") UUID photoId,@Param("id") Long id);
+    int updateImage(@Param("photoId") UUID photoId,@Param("id") Long id);
 
 
 }
