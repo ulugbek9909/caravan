@@ -16,7 +16,7 @@ import java.util.List;
 public class TripService {
     private final TripRepository repository;
     private final GuideRepository guideProfileRepository;
-    private final ConverterService converter;
+    private final ConverterService converterService;
     private final TripPlaceRepository tripPlaceRepository;
     private final TripPriceRepository tripPriceRepository;
     private final TripRateRepository tripRateRepository;
@@ -24,7 +24,7 @@ public class TripService {
     private final FacilityRepository facilityRepository;
 
     public TripDTO create(TripDTO dto) {
-        converter.convertToEntityAttribute(dto);
+        converterService.convertToEntityAttribute(dto);
         TripEntity entity = new TripEntity();
         entity.setName(dto.getName());
         entity.setMaxPeople(dto.getMaxPeople());

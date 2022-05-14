@@ -29,7 +29,7 @@ public class TripEntity {
 
     @Column(name = "guide_id")
     private Long guideId;
-    @JoinColumn(name = "guide_id")
+    @JoinColumn(name = "guide_id", updatable = false, insertable = false)
     @ManyToOne
     private GuideEntity guide;
 

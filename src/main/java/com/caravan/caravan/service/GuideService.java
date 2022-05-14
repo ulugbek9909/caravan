@@ -147,7 +147,7 @@ public class GuideService {
         AttachEntity byId = attachRepository.getById(String.valueOf(attachDTO.getId()));
 
         profileEntity.setPhoto(byId);
-        profileEntity.setPhotoId(String.valueOf(byId.getId()));
+        profileEntity.setPhotoId((byId.getId()));
 
         ProfileEntity profile = profileRepository.save(profileEntity);
 

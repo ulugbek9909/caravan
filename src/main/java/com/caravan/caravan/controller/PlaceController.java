@@ -13,6 +13,7 @@ import javax.validation.Valid;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/place")
+@RestController
 public class PlaceController {
 
     private final PlaceService service;

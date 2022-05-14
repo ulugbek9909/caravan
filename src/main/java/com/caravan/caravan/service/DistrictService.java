@@ -14,11 +14,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DistrictService {
 
-    private DistrictRepository districtRepository;
+    private final DistrictRepository repository;
 
     public DistrictDTO create(DistrictDTO dto) {
 
-        Optional<DistrictEntity> optional = districtRepository.findByKey(dto.getKey());
+        Optional<DistrictEntity> optional = repository.findByKey(dto.getKey());
         if (optional.isEmpty()) {
             throw new ItemNotFoundException("Item not found");
         }
@@ -29,14 +29,14 @@ public class DistrictService {
         entity.setNameEn(dto.getNameEn());
         entity.setRegionId(dto.getRegionId());
         entity.setCreatedDate(LocalDateTime.now());
-        districtRepository.save(entity);
+        repository.save(entity);
         dto.setId(entity.getId());
         return toDTO(entity);
     }
 
     public DistrictDTO update(String id, DistrictDTO dto) {
 
-        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+        DistrictEntity entity = repository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
         if (entity == null) {
             throw new ItemNotFoundException("Id null");
         }
@@ -47,24 +47,24 @@ public class DistrictService {
         entity.setNameRu(dto.getNameRu());
         entity.setRegionId(dto.getRegionId());
         entity.setUpdatedDate(LocalDateTime.now());
-        districtRepository.save(entity);
+        repository.save(entity);
 
         return toDTO(entity);
     }
 
-    public Boolean delete(String id) {
-        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
-
-        if (entity == null) {
-            throw new ItemNotFoundException("Not Found!");
-        }
-
-        int n = districtRepository.updateVisible(Integer.valueOf(id));
-        return n > 0;
-    }
+//    public Boolean delete(String id) {
+//        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
+//
+//        if (entity == null) {
+//            throw new ItemNotFoundException("Not Found!");
+//        }
+//
+//        int n = districtRepository.updateVisible(Integer.valueOf(id));
+//        return n > 0;
+//    }
 
     public DistrictDTO getById(Long id) {
-        DistrictEntity entity = districtRepository.findById(id)
+        DistrictEntity entity = repository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException("Not Found!"));
 
         if (entity == null) {

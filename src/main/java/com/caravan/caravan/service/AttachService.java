@@ -7,7 +7,6 @@ import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.AttachRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -28,14 +27,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
-import java.util.UUID;
 import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class AttachService {
-    private final AttachRepository attachRepository;
+    private final AttachRepository repository;
     @Value("${attach.upload.folder}")
     private String attachFolder;
     @Value("${server.domain.name}")
@@ -117,7 +115,7 @@ public class AttachService {
                 "/" + entity.getId() + "." + entity.getExtension());
 
         if (file.delete()) {
-            attachRepository.deleteById(key);
+            repository.deleteById(key);
             return true;
         } else throw new AppBadRequestException("Could not read the file!");
 
@@ -129,7 +127,7 @@ public class AttachService {
         entity.setOriginalName(file.getOriginalFilename());
         entity.setExtension(extension);
         entity.setSize(file.getSize());
-        attachRepository.save(entity);
+        repository.save(entity);
         return entity;
     }
 
@@ -147,7 +145,7 @@ public class AttachService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdDate"));
 
         List<AttachDTO> dtoList = new ArrayList<>();
-        attachRepository.findAll(pageable).stream().forEach(entity -> {
+        repository.findAll(pageable).stream().forEach(entity -> {
             dtoList.add(toDTO(entity));
         });
 
@@ -155,7 +153,7 @@ public class AttachService {
     }
 
     public AttachEntity get(String id) {
-        return attachRepository.findById(id).orElseThrow(() -> {
+        return repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Attach not found");
         });
     }

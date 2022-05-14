@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class DistrictController {
 
-    private DistrictService districtService;
+    private final DistrictService districtService;
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DistrictDTO dto) {
