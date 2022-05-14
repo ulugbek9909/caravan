@@ -1,5 +1,6 @@
 package com.caravan.caravan.service;
 
+import com.caravan.caravan.dto.AttachDTO;
 import com.caravan.caravan.dto.ProfileDTO;
 import com.caravan.caravan.entity.ProfileEntity;
 import com.caravan.caravan.enums.ProfileRole;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @Slf4j
 public class ProfileService {
     private final ProfileRepository repository;
+    private final AttachService attachService;
 
     private final AttachService attachService;
 
@@ -54,6 +56,21 @@ public class ProfileService {
         });
         return ConverterService.convertToDTO(entity);
     }
+    public ProfileDTO getProfileByPhone(String phone){
+        Optional<ProfileEntity> phoneNumber = repository.findByPhoneNumber(phone);
+        if (!phoneNumber.isPresent()){
+            throw new ItemNotFoundException("Item not found");
+        }
+        return ConverterService.convertToDTO(phoneNumber.get());
+    }
+
+    public ProfileDTO getByPhoneNummber(String phoneNumber) {
+        Optional<ProfileEntity> optional = repository.findByPhoneNumber(phoneNumber);
+        if (optional.isEmpty()) {
+            return null;
+        }
+        return ConverterService.convertToDTO(optional.get());
+    }
 
     public ProfileEntity get(Long id) {
         return repository.findById(id).orElseThrow(() -> {
@@ -68,10 +85,21 @@ public class ProfileService {
         });
         entity.setGender(dto.getGender());
         entity.setEmail(dto.getEmail());
+        entity.setSurname(dto.getSurname());
         entity.setName(entity.getName());
 
         repository.save(entity);
         return ConverterService.convertToDTO(entity);
+    }
+
+    public AttachDTO updateProfileImage(Long id,UUID attachId){
+
+        ProfileDTO profileDTO = getById(id);
+        if (profileDTO.getPhotoId() != null){
+            attachService.delete(profileDTO.getPhotoId());
+        }
+        repository.updateImage(attachId,id);
+        return attachService.toDTO(attachService.get(attachId));
     }
 
 

@@ -1,6 +1,7 @@
 package com.caravan.caravan.controller;
 
 import com.caravan.caravan.dto.ProfileDTO;
+import com.caravan.caravan.service.AttachService;
 import com.caravan.caravan.service.ProfileService;
 import com.caravan.caravan.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -21,11 +22,16 @@ public class ProfileController {
     private final ProfileService service;
 
 
+
     //get by id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Long id, HttpServletRequest request) {
+    public ResponseEntity<?> getById(@PathVariable("id") Long id, HttpServletRequest request) {  //Required token
         Long profileId = JwtUtil.getIdFromHeader(request);
         return ResponseEntity.ok(service.getById(id));
+    }
+    @GetMapping("/phone")
+    public ResponseEntity<?> getProfileDetail( @RequestBody String phoneNumber){
+        return ResponseEntity.ok(service.getProfileByPhone(phoneNumber));
     }
 
     //create profile
@@ -33,6 +39,7 @@ public class ProfileController {
     public ResponseEntity<?> create(@RequestBody @Valid ProfileDTO dto) {
         return ResponseEntity.ok(service.create(dto));
     }
+
 
     //update profile
     @PutMapping("/{id}")

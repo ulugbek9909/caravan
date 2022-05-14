@@ -21,7 +21,6 @@ public class ConverterService {
         return null;
     }
 
-
     public static ProfileDTO convertToDTO(ProfileEntity entity) {
         ProfileDTO dto = new ProfileDTO();
         dto.setGender(entity.getGender());
@@ -41,7 +40,7 @@ public class ConverterService {
         dto.setId(entity.getId());
         dto.setProfileId(entity.getProfileId());
         dto.setBiography(entity.getBiography());
-        dto.setActivity(entity.getActivity());
+        dto.setIsHiring(entity.getIsHiring());
         dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
         dto.setCreatedDate(entity.getCreatedDate());
@@ -74,8 +73,7 @@ public class ConverterService {
         return entity;
     }
 
-
-    public RegionDTO convertToDatabaseColumn(RegionEntity entity) {
+    public RegionDTO convertToDatabaseColumn(RegionEntity tripEntity) {
         return null;
     }
 

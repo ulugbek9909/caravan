@@ -10,9 +10,9 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "admin")
 @Getter
 @Setter
+@Table(name = "admin")
 public class AdminEntity extends BaseEntity{
 
     @Column(name = "username")

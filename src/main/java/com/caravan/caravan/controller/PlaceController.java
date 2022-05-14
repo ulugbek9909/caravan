@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RequiredArgsConstructor
+@RestController
 @RequestMapping("/place")
 @RestController
 public class PlaceController {
