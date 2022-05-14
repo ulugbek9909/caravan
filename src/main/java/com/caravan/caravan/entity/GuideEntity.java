@@ -7,12 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "guide")
 @Getter
 @Setter
-@Table(name = "guide")
 public class GuideEntity extends BaseEntity {
 
-    @Column(unique = true)
+    @Column
     private String secondPhoneNumber; // OPTIONAL
 
     @Column(columnDefinition = "text")

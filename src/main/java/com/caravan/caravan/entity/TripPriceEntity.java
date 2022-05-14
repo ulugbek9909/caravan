@@ -1,30 +1,35 @@
 package com.caravan.caravan.entity;
 
+import com.caravan.caravan.enums.PriceType;
+import com.caravan.caravan.enums.TripType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
+@Table(name = "trip_price")
 @Getter
 @Setter
-@Table(name = "trip_price")
-public class TripPriceEntity extends BaseEntity{
+public class TripPriceEntity extends BaseEntity {
 
-    @Column(name = "trip_id")
+    @Column(name = "trip_id", nullable = false)
     private Long tripId;
+    @JoinColumn(name = "trip_id", insertable = false, updatable = false)
+    @ManyToOne
+    private TripEntity trip;
 
-    @Lob
-    @Column(name = "price_type")
-    private String priceType;
+    @Column(name = "trip_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TripType tripType;
+
+    @Column(name = "price_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private PriceType priceType;
 
     @Column(name = "price")
-    private Double price;
-
+    private Long price;
 
 }

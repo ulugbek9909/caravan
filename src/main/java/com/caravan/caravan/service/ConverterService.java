@@ -12,8 +12,12 @@ import java.util.UUID;
 public class ConverterService {
 
 
-    public static TripDTO convertToDTO(TripEntity tripEntity) {
-        return null;
+    public static GuideRateDTO convertToDTO(GuideRateEntity entity) {
+        GuideRateDTO dto = new GuideRateDTO();
+        dto.setGuideId(entity.getGuideId());
+        dto.setMark(entity.getMark());
+        dto.setProfileId(entity.getProfileId());
+        return dto;
     }
 
 
@@ -40,12 +44,24 @@ public class ConverterService {
         dto.setId(entity.getId());
         dto.setProfileId(entity.getProfileId());
         dto.setBiography(entity.getBiography());
-        dto.setIsHiring(entity.getIsHiring());
+        dto.setActivity(entity.getActivity());
         dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
 
+        return dto;
+    }
+
+    public static ReviewTripDTO convertToDTO(ReviewTripEntity entity) {
+        var dto = new ReviewTripDTO();
+
+        dto.setId(entity.getId());
+        dto.setProfileId(entity.getProfileId());
+        dto.setTripId(entity.getTripId());
+        dto.setCreatedDate(entity.getCreatedDate());
+       // dto.setType(entity.getType());
+        dto.setContent(entity.getContent());
         return dto;
     }
 
@@ -98,29 +114,31 @@ public class ConverterService {
         dto.setTripCount(entity.getTripCount());
         return dto;
     }
-    public static DistrictDTO convertToDTO(DistrictEntity entity) {
-        DistrictDTO dto = new DistrictDTO();
 
-        dto.setKey(entity.getKey());
-        dto.setNameUz(entity.getNameUz());
-        dto.setNameRu(entity.getNameRu());
-        dto.setNameEn(entity.getNameEn());
-        dto.setRegionId(entity.getRegionId());
-
-        return dto;
-    }
-    public static DistrictEntity convertToEntity(DistrictDTO dto){
-        DistrictEntity entity = new DistrictEntity();
-        if (dto.getId()!=0){
-        entity.setId(dto.getId());
-        }
-        entity.setNameEn(dto.getNameEn());
-        entity.setNameRu(dto.getNameRu());
-        entity.setNameUz(dto.getNameUz());
-        entity.setRegionId(dto.getRegionId());
-        entity.setKey(dto.getKey());
-
-        return entity;
-    }
+    // TODO: 14-May-22 DISTRICT to'liq emas
+//    public static DistrictDTO convertToDTO(DistrictEntity entity) {
+//        DistrictDTO dto = new DistrictDTO();
+//
+//        dto.setKey(entity.getKey());
+//        dto.setNameUz(entity.getNameUz());
+//        dto.setNameRu(entity.getNameRu());
+//        dto.setNameEn(entity.getNameEn());
+//        dto.setRegionId(entity.getRegionId());
+//
+//        return dto;
+//    }
+//    public static DistrictEntity convertToEntity(DistrictDTO dto){
+//        DistrictEntity entity = new DistrictEntity();
+//        if (dto.getId()!=0){
+//        entity.setId(dto.getId());
+//        }
+//        entity.setNameEn(dto.getNameEn());
+//        entity.setNameRu(dto.getNameRu());
+//        entity.setNameUz(dto.getNameUz());
+//        entity.setRegionId(dto.getRegionId());
+//        entity.setKey(dto.getKey());
+//
+//        return entity;
+//    }
 
 }

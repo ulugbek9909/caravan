@@ -31,7 +31,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class AttachService {
-    private final AttachRepository attachRepository;
+    private final AttachRepository repository;
     @Value("${attach.upload.folder}")
     private String attachFolder;
     @Value("${server.domain.name}")
@@ -113,7 +113,7 @@ public class AttachService {
                 "/" + entity.getId() + "." + entity.getExtension());
 
         if (file.delete()) {
-            attachRepository.deleteById(key);
+            repository.deleteById(key);
             return true;
         } else throw new AppBadRequestException("Could not read the file!");
 
@@ -124,10 +124,10 @@ public class AttachService {
 
     public AttachEntity saveAttach(AttachEntity entity, String pathFolder, String extension, MultipartFile file) {
         entity.setPath(pathFolder);
-       // entity.setOriginalName(file.getOriginalFilename());
+        entity.setOriginName(file.getOriginalFilename());
         entity.setExtension(extension);
         entity.setSize(file.getSize());
-        attachRepository.save(entity);
+        repository.save(entity);
         return entity;
     }
 
@@ -145,7 +145,7 @@ public class AttachService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdDate"));
 
         List<AttachDTO> dtoList = new ArrayList<>();
-        attachRepository.findAll(pageable).stream().forEach(entity -> {
+        repository.findAll(pageable).stream().forEach(entity -> {
             dtoList.add(toDTO(entity));
         });
 
@@ -153,7 +153,7 @@ public class AttachService {
     }
 
     public AttachEntity get(UUID id) {
-        return attachRepository.findById(id).orElseThrow(() -> {
+        return repository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Attach not found");
         });
     }

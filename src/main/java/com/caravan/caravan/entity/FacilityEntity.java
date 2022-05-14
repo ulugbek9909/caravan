@@ -3,16 +3,12 @@ package com.caravan.caravan.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import java.util.UUID;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "facility")
 @Getter
 @Setter
-@Table(name = "facility")
 public class FacilityEntity extends BaseEntity {
 
     @Column(name = "title")
@@ -22,7 +18,11 @@ public class FacilityEntity extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "trip_id")
+
+    @Column(name = "trip_id", nullable = false)
     private Long tripId;
+    @JoinColumn(name = "trip_id", insertable = false, updatable = false)
+    @ManyToOne
+    private TripEntity trip;
 
 }

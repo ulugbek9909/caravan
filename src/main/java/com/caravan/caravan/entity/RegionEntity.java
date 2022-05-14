@@ -7,11 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Table(name = "region")
 @Entity
+@Table(name = "region")
 @Getter
 @Setter
 public class RegionEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
