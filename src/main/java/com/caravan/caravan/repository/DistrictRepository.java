@@ -17,4 +17,5 @@ public interface DistrictRepository extends JpaRepository<DistrictEntity, Long> 
     @Modifying
     @Query("delete from DistrictEntity  where id = :id")
     int updateVisible(@Param("id") Integer id);
+
 }

@@ -14,13 +14,13 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DistrictDTO extends BaseDTO{
 
+    private String key;
+
     private String nameUz;
 
     private String nameRu;
 
     private String nameEn;
-
-    private String key;
 
     private Long regionId;
 
