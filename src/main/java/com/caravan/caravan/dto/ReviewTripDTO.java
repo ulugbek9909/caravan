@@ -19,6 +19,5 @@ public class ReviewTripDTO extends BaseDTO {
     private Long tripId;
     @NotNull
     private Long profileId;
-    private String type;
 
 }

@@ -38,7 +38,8 @@ public class ReviewTripService {
         entity.setTripId(dto.getTripId());
         entity.setContent(dto.getContent());
         entity.setProfileId(dto.getProfileId());
-        entity.setType(dto.getType());
+        entity.setTripId(dto.getTripId());
+
         repository.save(entity);
 
         return ConverterService.convertToDTO(entity);
