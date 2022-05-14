@@ -1,37 +1,29 @@
 package com.caravan.caravan.controller;
 
+import com.caravan.caravan.annotation.ValidEmail;
 import com.caravan.caravan.dto.DistrictDTO;
 import com.caravan.caravan.service.DistrictService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/district")
 @RequiredArgsConstructor
 public class DistrictController {
 
-    private final DistrictService districtService;
+    private DistrictService service;
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody DistrictDTO dto) {
-        return ResponseEntity.ok(districtService.create(dto));
+    public ResponseEntity<?> create(@RequestBody @Valid DistrictDTO dto) {
+        return ResponseEntity.ok(service.create(dto));
     }
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody DistrictDTO dto) {
-//        return ResponseEntity.ok(districtService.update(id, dto));
-//    }
-
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-//        return ResponseEntity.ok(districtService.delete(id));
-//    }
-
-    @GetMapping("/getById/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(districtService.getById(id));
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> get(@PathVariable("id") @Valid Long id){
+        return ResponseEntity.ok(service.getbyId(id));
     }
-
 
 }
