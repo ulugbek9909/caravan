@@ -13,8 +13,8 @@ public interface DistrictRepository extends JpaRepository<DistrictEntity, Long> 
 
     Optional<DistrictEntity> findByKey(String key);
 
-    @Transactional
-    @Modifying
-    @Query("delete from DistrictEntity  where id = :id")
-    int updateVisible(@Param("id") Integer id);
+//    @Transactional
+//    @Modifying
+//    @Query("delete from DistrictEntity  where id = :id")
+//    int updateVisible(@Param("id") Integer id);
 }

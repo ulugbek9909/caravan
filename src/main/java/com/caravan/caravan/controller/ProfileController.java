@@ -1,6 +1,7 @@
 package com.caravan.caravan.controller;
 
 import com.caravan.caravan.dto.ProfileDTO;
+import com.caravan.caravan.service.AttachService;
 import com.caravan.caravan.service.ProfileService;
 import com.caravan.caravan.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 public class ProfileController {
 
     private final ProfileService service;
+
 
 
     //get by id
@@ -55,5 +57,12 @@ public class ProfileController {
     @GetMapping("/")
     public ResponseEntity<?> getProfileList() {
         return ResponseEntity.ok(service.getList());
+    }
+
+    // TODO: 14-May-22 Profile delete main Photo
+    @DeleteMapping("/delete/photo")
+    public ResponseEntity<?> deletePhoto(HttpServletRequest request) {
+        Long id = JwtUtil.getIdFromHeader(request);
+        return ResponseEntity.ok(service.deletePhoto(id));
     }
 }

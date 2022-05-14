@@ -14,6 +14,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/place")
+@RestController
 public class PlaceController {
 
     private final PlaceService service;
