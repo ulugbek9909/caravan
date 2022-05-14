@@ -64,6 +64,14 @@ public class GuideService {
                 });
     }
 
+    public GuideDTO getDtoById(Long id) {
+
+        return ConverterService.convertToDTO(repository.findById(id).orElseThrow(() -> {
+            log.warn("Not found {}", id);
+            return new ItemNotFoundException("Guide not Found!");
+        }));
+    }
+
 
     // TODO: 14-May-22 tasks.txt vazifa (Guide 1. 2. -> Javlon)
     public GuideDTO addInfo(Long profileId, GuideDTO dto) {

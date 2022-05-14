@@ -58,7 +58,7 @@ public class ProfileService {
     }
     public ProfileDTO getProfileByPhone(String phone){
         Optional<ProfileEntity> phoneNumber = repository.findByPhoneNumber(phone);
-        if (!phoneNumber.isPresent()){
+        if (phoneNumber.isEmpty()){
             throw new ItemNotFoundException("Item not found");
         }
         return ConverterService.convertToDTO(phoneNumber.get());

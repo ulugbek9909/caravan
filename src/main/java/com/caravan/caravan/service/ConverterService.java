@@ -12,8 +12,12 @@ import java.util.UUID;
 public class ConverterService {
 
 
-    public static TripDTO convertToDTO(TripEntity tripEntity) {
-        return null;
+    public static GuideRateDTO convertToDTO(GuideRateEntity entity) {
+        GuideRateDTO dto = new GuideRateDTO();
+        dto.setGuideId(entity.getGuideId());
+        dto.setMark(entity.getMark());
+        dto.setProfileId(entity.getProfileId());
+        return dto;
     }
 
 

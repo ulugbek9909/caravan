@@ -19,10 +19,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReviewTripService {
 
-    private ReviewTripRepository repository;
-
-    private TripService tripService;
-    private ProfileService profileService;
+    private final ReviewTripRepository repository;
+    private final TripService tripService;
+    private final ProfileService profileService;
 
 
     public ReviewTripDTO create(ReviewTripDTO dto) {
@@ -46,6 +45,14 @@ public class ReviewTripService {
     }
 
     public boolean delete(Long profileId, Long tripId) {
+        TripDTO tripDTO = tripService.getById(tripId);
+
+        ProfileDTO profileDTO = profileService.getById(profileId);
+
+        if (tripDTO == null) throw new ItemNotFoundException("trip not found");
+
+        if (profileDTO == null) throw new ItemNotFoundException("profile not found");
+
         return 0 < repository.deleteByProfileIdAndTripId(profileId, tripId);
     }
 
