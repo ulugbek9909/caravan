@@ -8,9 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "social_network")
 @Getter
 @Setter
+@Table(name = "social_network")
 public class SocialNetworkEntity extends BaseEntity{
 
     @Column(name = "type")

@@ -54,6 +54,13 @@ public class ProfileService {
         });
         return ConverterService.convertToDTO(entity);
     }
+    public ProfileDTO getProfileByPhone(String phone){
+        Optional<ProfileEntity> phoneNumber = repository.findByPhoneNumber(phone);
+        if (!phoneNumber.isPresent()){
+            throw new ItemNotFoundException("Item not found");
+        }
+        return ConverterService.convertToDTO(phoneNumber.get());
+    }
 
     public ProfileDTO getByPhoneNummber(String phoneNumber) {
         Optional<ProfileEntity> optional = repository.findByPhoneNumber(phoneNumber);
@@ -71,6 +78,7 @@ public class ProfileService {
         entity.setEmail(dto.getEmail());
         entity.setSurname(dto.getSurname());
         entity.setName(entity.getName());
+
         repository.save(entity);
         return ConverterService.convertToDTO(entity);
     }

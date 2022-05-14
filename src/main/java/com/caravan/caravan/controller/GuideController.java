@@ -1,12 +1,14 @@
 package com.caravan.caravan.controller;
 
 import com.caravan.caravan.dto.GuideDTO;
+import com.caravan.caravan.dto.ProfileDTO;
 import com.caravan.caravan.service.GuideService;
 import com.caravan.caravan.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,10 +35,7 @@ public class GuideController {
         return ResponseEntity.ok(service.update(dto, id));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(service.deleteById(id));
-    }
+
 
     @PutMapping("/status/{jwt}")
     public ResponseEntity<?> changeStatus(@PathVariable("jwt") String jwt) {
@@ -55,4 +54,28 @@ public class GuideController {
     }
 
 
+
+    //  TODO: 3. Update (bio, second_number) ; Update Profile Detail in Guide by Profile Id; {Ulugbek}
+
+    @PutMapping("/update/all/{id}")
+    public ResponseEntity<?> updateAll(@PathVariable("id") Long id,@RequestBody GuideDTO dto, @RequestBody ProfileDTO profileDTO){
+        return ResponseEntity.ok(service.updateAll(id,dto,profileDTO));
+    }
+
+    @PutMapping("/update/phote/{id}")
+   // @PutMapping("/update/{key}")
+/*    public ResponseEntity<?> update(@RequestParam("file") MultipartFile file,
+                                    @PathVariable("key") String key) {*/
+
+
+    public ResponseEntity<?> getById(@PathVariable("id") Long id,@RequestParam("file") MultipartFile file){
+        //log.info("update : {}", file +" key:"+key);
+        return ResponseEntity.ok(service.updatePhoto(id,file));
+    }
+
+   // TODO: 4. Delete (Guide Account, Change Role Profile Id) -> by Month; {Ulugbek}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.deleteById(id));
+    }
 }
