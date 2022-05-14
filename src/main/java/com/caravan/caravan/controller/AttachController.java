@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 @Slf4j
 @RestController
 @RequestMapping("/attach")
@@ -23,21 +25,21 @@ public class AttachController {
     }
 
     @GetMapping(value = "/open_general/{fileName}", produces = MediaType.ALL_VALUE)
-    public byte[] open_general(@PathVariable("fileName") String fileName) {
-        log.info("open_general : {}", fileName );
-        return attachService.open_general(fileName);
+    public byte[] open_general(@PathVariable("fileName") String id) {
+        log.info("open_general : {}", id);
+        return attachService.open_general(UUID.fromString(id));
     }
 
     @GetMapping("/download/{fileName}")
-    public ResponseEntity<Resource> download(@PathVariable("fileName") String fileName) {
-        log.info("download : {}", fileName );
-        return attachService.download(fileName);
+    public ResponseEntity<Resource> download(@PathVariable("fileName") String id) {
+        log.info("download : {}", id );
+        return attachService.download(UUID.fromString(id));
     }
     @PutMapping("/update/{key}")
     public ResponseEntity<?> update(@RequestParam("file") MultipartFile file,
                                     @PathVariable("key") String key) {
         log.info("update : {}", file +" key:"+key);
-        return ResponseEntity.ok(attachService.update(file,key));
+        return ResponseEntity.ok(attachService.update(file,UUID.fromString(key)));
     }
 
 
@@ -51,6 +53,6 @@ public class AttachController {
     @DeleteMapping("/delete/{key}")
     public ResponseEntity<?> delete(@PathVariable("key") String key) {
         log.info("delete : {}", key );
-        return ResponseEntity.ok(attachService.delete(key));
+        return ResponseEntity.ok(attachService.delete(UUID.fromString(key)));
     }
 }

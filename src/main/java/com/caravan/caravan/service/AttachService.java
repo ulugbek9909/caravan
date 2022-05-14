@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -59,12 +60,12 @@ public class AttachService {
             return toDTO(entity);
         } catch (IOException | RuntimeException e) {
             log.warn("Cannot Upload");
-            delete(entity.getId().toString());
+            delete(entity.getId());
             throw new AppBadRequestException(e.getMessage());
         }
     }
 
-    public byte[] open_general(String id) {
+    public byte[] open_general(UUID id) {
         byte[] data;
         try {
             AttachEntity entity = get(id);
@@ -78,7 +79,7 @@ public class AttachService {
         return new byte[0];
     }
 
-    public ResponseEntity<Resource> download(String key) { // images.png
+    public ResponseEntity<Resource> download(UUID key) { // images.png
         try {
             AttachEntity entity = get(key);
             String path = entity.getPath() + "/" + key + "." + entity.getExtension();
@@ -99,13 +100,13 @@ public class AttachService {
         }
     }
 
-    public AttachDTO update(MultipartFile fileDto, String key) {
+    public AttachDTO update(MultipartFile fileDto, UUID key) {
         if (delete(key)) {
             return upload(fileDto);
         } else throw new AppBadRequestException("Could not read the file!");
     }
 
-    public Boolean delete(String key) {
+    public Boolean delete(UUID key) {
         AttachEntity entity = get(key);
 
         File file = new File(attachFolder + entity.getPath() +
@@ -117,6 +118,8 @@ public class AttachService {
         } else throw new AppBadRequestException("Could not read the file!");
 
     }
+
+
 
 
     public AttachEntity saveAttach(AttachEntity entity, String pathFolder, String extension, MultipartFile file) {
@@ -149,7 +152,7 @@ public class AttachService {
         return dtoList;
     }
 
-    public AttachEntity get(String id) {
+    public AttachEntity get(UUID id) {
         return attachRepository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Attach not found");
         });
