@@ -22,14 +22,26 @@
     3. Update (bio, second_number) ; Update Profile Detail in Guide by Profile Id;
     4. Delete (Guide Account, Change Role Profile Id) -> by Month;
 
-Profile
-2. 4. 5. -> Sarvar
-6. 7. -> Sardor
+Profile **
+2. 4. 5. -> Sarvar **
+6. 7. -> Sardor **
 Guide
-1. 2. -> Javlon
-3. 4. -> Ulugbek
+1. 2. -> Javlon **
+3. 4. -> Ulugbek **
 
 ///
 
-	2. Authorization
-	     id,name,surname,email,phone,main_photo (url) /// MuhammadAli
+3.  Attach
+
+    1. Upload (file)     values (originName, size, path, extension)
+    2. Delete (id)
+
+4.  District
+
+    1. Create (name, regionId)
+    2  Update (id, District DTO)
+    3. List
+    4. getById(id)
+    5. Delete(id)
+
+5. GuideRate

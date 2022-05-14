@@ -124,7 +124,7 @@ public class AttachService {
 
     public AttachEntity saveAttach(AttachEntity entity, String pathFolder, String extension, MultipartFile file) {
         entity.setPath(pathFolder);
-       // entity.setOriginalName(file.getOriginalFilename());
+        entity.setOriginName(file.getOriginalFilename());
         entity.setExtension(extension);
         entity.setSize(file.getSize());
         repository.save(entity);

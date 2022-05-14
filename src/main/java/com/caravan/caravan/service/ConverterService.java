@@ -60,7 +60,7 @@ public class ConverterService {
         dto.setProfileId(entity.getProfileId());
         dto.setTripId(entity.getTripId());
         dto.setCreatedDate(entity.getCreatedDate());
-        dto.setType(entity.getType());
+       // dto.setType(entity.getType());
         dto.setContent(entity.getContent());
         return dto;
     }
