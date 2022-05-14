@@ -11,10 +11,11 @@ import java.util.UUID;
 
 
 @Entity
+@Table(name = "guide_rate")
 @Getter
 @Setter
-@Table(name = "guide_rate")
 public class GuideRateEntity extends BaseEntity{
+
     @Column(name = "guide_id")
     private Long guideId;
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,15 +13,11 @@ import java.util.UUID;
 @Setter
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DistrictDTO extends BaseDTO{
+public class DistrictDTO extends BaseDTO {
 
-    private String key;
+    @NotBlank(message = "District required")
+    private String district;
 
-    private String nameUz;
-
-    private String nameRu;
-
-    private String nameEn;
 
     private Long regionId;
 

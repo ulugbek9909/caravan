@@ -40,7 +40,7 @@ public class ProfileEntity extends BaseEntity {
     private Gender gender;
 
     @Column(name = "photo_id")
-    private UUID photoId; // ATTACH UUID
+    private UUID photoId; // TODO: ATTACH UUID
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "photo_id", updatable = false, insertable = false)
     private AttachEntity photo;

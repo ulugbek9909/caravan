@@ -110,29 +110,31 @@ public class ConverterService {
         dto.setTripCount(entity.getTripCount());
         return dto;
     }
-    public static DistrictDTO convertToDTO(DistrictEntity entity) {
-        DistrictDTO dto = new DistrictDTO();
 
-        dto.setKey(entity.getKey());
-        dto.setNameUz(entity.getNameUz());
-        dto.setNameRu(entity.getNameRu());
-        dto.setNameEn(entity.getNameEn());
-        dto.setRegionId(entity.getRegionId());
-
-        return dto;
-    }
-    public static DistrictEntity convertToEntity(DistrictDTO dto){
-        DistrictEntity entity = new DistrictEntity();
-        if (dto.getId()!=0){
-        entity.setId(dto.getId());
-        }
-        entity.setNameEn(dto.getNameEn());
-        entity.setNameRu(dto.getNameRu());
-        entity.setNameUz(dto.getNameUz());
-        entity.setRegionId(dto.getRegionId());
-        entity.setKey(dto.getKey());
-
-        return entity;
-    }
+    // TODO: 14-May-22 DISTRICT to'liq emas
+//    public static DistrictDTO convertToDTO(DistrictEntity entity) {
+//        DistrictDTO dto = new DistrictDTO();
+//
+//        dto.setKey(entity.getKey());
+//        dto.setNameUz(entity.getNameUz());
+//        dto.setNameRu(entity.getNameRu());
+//        dto.setNameEn(entity.getNameEn());
+//        dto.setRegionId(entity.getRegionId());
+//
+//        return dto;
+//    }
+//    public static DistrictEntity convertToEntity(DistrictDTO dto){
+//        DistrictEntity entity = new DistrictEntity();
+//        if (dto.getId()!=0){
+//        entity.setId(dto.getId());
+//        }
+//        entity.setNameEn(dto.getNameEn());
+//        entity.setNameRu(dto.getNameRu());
+//        entity.setNameUz(dto.getNameUz());
+//        entity.setRegionId(dto.getRegionId());
+//        entity.setKey(dto.getKey());
+//
+//        return entity;
+//    }
 
 }

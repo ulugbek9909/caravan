@@ -49,13 +49,13 @@ public class ReviewTripService {
         return 0 < repository.deleteByProfileIdAndTripId(profileId, tripId);
     }
 
-    public PageImpl<ReviewTripDTO> getReviewByTripId(Long tripId,int page,int size){
+    public PageImpl<ReviewTripDTO> getReviewByTripId(Long tripId, int page, int size) {
 
         PageRequest of = PageRequest.of(page, size);
         Page<ReviewTripEntity> entityPage = repository.findAllByTripId(tripId, of);
         List<ReviewTripDTO> reviewTripDTOS = entityPage.stream().map(ConverterService::convertToDTO).toList();
 
-        return new PageImpl<>(reviewTripDTOS,of,entityPage.getTotalElements());
+        return new PageImpl<>(reviewTripDTOS, of, entityPage.getTotalElements());
     }
 
 
