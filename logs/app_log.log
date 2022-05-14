@@ -1,0 +1,360 @@
+14 May 2022 - 13:19:28.358 - c.caravan.caravan.CaravanApplication -  INFO  - Starting CaravanApplication using Java 18.0.1.1 on us-HP-Pavilion-Laptop-15-eg0xxx with PID 3066 (/home/us/IdeaProjects/caravan/target/classes started by us in /home/us/IdeaProjects/caravan)
+14 May 2022 - 13:19:28.360 - c.caravan.caravan.CaravanApplication -  INFO  - The following 1 profile is active: "dev"
+14 May 2022 - 13:19:28.395 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14 May 2022 - 13:19:28.396 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14 May 2022 - 13:19:28.738 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14 May 2022 - 13:19:28.778 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 36 ms. Found 17 JPA repository interfaces.
+14 May 2022 - 13:19:29.117 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port(s): 8080 (http)
+14 May 2022 - 13:19:29.121 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 May 2022 - 13:19:29.122 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/9.0.62]
+14 May 2022 - 13:19:29.150 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring embedded WebApplicationContext
+14 May 2022 - 13:19:29.150 - o.s.b.w.s.c.ServletWebServerApplicationContext -  INFO  - Root WebApplicationContext: initialization completed in 754 ms
+14 May 2022 - 13:19:29.226 - o.h.jpa.internal.util.LogHelper -  INFO  - HHH000204: Processing PersistenceUnitInfo [name: default]
+14 May 2022 - 13:19:29.248 - org.hibernate.Version -  INFO  - HHH000412: Hibernate ORM core version 5.6.8.Final
+14 May 2022 - 13:19:29.299 - o.h.annotations.common.Version -  INFO  - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+14 May 2022 - 13:19:29.344 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+14 May 2022 - 13:19:29.481 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+14 May 2022 - 13:19:29.489 - org.hibernate.dialect.Dialect -  INFO  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+14 May 2022 - 13:19:29.674 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  ERROR - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:19:29.675 - o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:19:29.676 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+14 May 2022 - 13:19:29.684 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+14 May 2022 - 13:19:29.685 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+14 May 2022 - 13:19:29.692 - o.s.b.a.l.ConditionEvaluationReportLoggingListener -  INFO  - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+14 May 2022 - 13:19:29.707 - o.s.boot.SpringApplication -  ERROR - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.caravan.caravan.CaravanApplication.main(CaravanApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:895)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:913)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:935)
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:637)
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267)
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:359)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 23 common frames omitted
+14 May 2022 - 13:20:30.920 - c.caravan.caravan.CaravanApplication -  INFO  - Starting CaravanApplication using Java 18.0.1.1 on us-HP-Pavilion-Laptop-15-eg0xxx with PID 3226 (/home/us/IdeaProjects/caravan/target/classes started by us in /home/us/IdeaProjects/caravan)
+14 May 2022 - 13:20:30.921 - c.caravan.caravan.CaravanApplication -  INFO  - The following 1 profile is active: "dev"
+14 May 2022 - 13:20:30.952 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14 May 2022 - 13:20:30.952 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14 May 2022 - 13:20:31.300 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14 May 2022 - 13:20:31.349 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 42 ms. Found 17 JPA repository interfaces.
+14 May 2022 - 13:20:31.683 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port(s): 8080 (http)
+14 May 2022 - 13:20:31.688 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 May 2022 - 13:20:31.689 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/9.0.62]
+14 May 2022 - 13:20:31.724 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring embedded WebApplicationContext
+14 May 2022 - 13:20:31.724 - o.s.b.w.s.c.ServletWebServerApplicationContext -  INFO  - Root WebApplicationContext: initialization completed in 772 ms
+14 May 2022 - 13:20:31.789 - o.h.jpa.internal.util.LogHelper -  INFO  - HHH000204: Processing PersistenceUnitInfo [name: default]
+14 May 2022 - 13:20:31.805 - org.hibernate.Version -  INFO  - HHH000412: Hibernate ORM core version 5.6.8.Final
+14 May 2022 - 13:20:31.852 - o.h.annotations.common.Version -  INFO  - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+14 May 2022 - 13:20:31.883 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+14 May 2022 - 13:20:32.013 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+14 May 2022 - 13:20:32.021 - org.hibernate.dialect.Dialect -  INFO  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+14 May 2022 - 13:20:32.169 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  ERROR - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:20:32.169 - o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:20:32.170 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+14 May 2022 - 13:20:32.183 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+14 May 2022 - 13:20:32.184 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+14 May 2022 - 13:20:32.192 - o.s.b.a.l.ConditionEvaluationReportLoggingListener -  INFO  - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+14 May 2022 - 13:20:32.202 - o.s.boot.SpringApplication -  ERROR - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.caravan.caravan.CaravanApplication.main(CaravanApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:895)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:913)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:935)
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:637)
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267)
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:359)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 23 common frames omitted
+14 May 2022 - 13:23:44.986 - c.caravan.caravan.CaravanApplication -  INFO  - Starting CaravanApplication using Java 18.0.1.1 on us-HP-Pavilion-Laptop-15-eg0xxx with PID 3838 (/home/us/IdeaProjects/caravan/target/classes started by us in /home/us/IdeaProjects/caravan)
+14 May 2022 - 13:23:44.987 - c.caravan.caravan.CaravanApplication -  INFO  - The following 1 profile is active: "dev"
+14 May 2022 - 13:23:45.020 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14 May 2022 - 13:23:45.020 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14 May 2022 - 13:23:45.344 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14 May 2022 - 13:23:45.385 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 37 ms. Found 17 JPA repository interfaces.
+14 May 2022 - 13:23:45.654 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port(s): 8080 (http)
+14 May 2022 - 13:23:45.658 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 May 2022 - 13:23:45.658 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/9.0.62]
+14 May 2022 - 13:23:45.684 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring embedded WebApplicationContext
+14 May 2022 - 13:23:45.685 - o.s.b.w.s.c.ServletWebServerApplicationContext -  INFO  - Root WebApplicationContext: initialization completed in 665 ms
+14 May 2022 - 13:23:45.762 - o.h.jpa.internal.util.LogHelper -  INFO  - HHH000204: Processing PersistenceUnitInfo [name: default]
+14 May 2022 - 13:23:45.778 - org.hibernate.Version -  INFO  - HHH000412: Hibernate ORM core version 5.6.8.Final
+14 May 2022 - 13:23:45.822 - o.h.annotations.common.Version -  INFO  - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+14 May 2022 - 13:23:45.851 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+14 May 2022 - 13:23:45.983 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+14 May 2022 - 13:23:45.991 - org.hibernate.dialect.Dialect -  INFO  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+14 May 2022 - 13:23:46.138 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  ERROR - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:23:46.139 - o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:23:46.140 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+14 May 2022 - 13:23:46.147 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+14 May 2022 - 13:23:46.148 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+14 May 2022 - 13:23:46.156 - o.s.b.a.l.ConditionEvaluationReportLoggingListener -  INFO  - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+14 May 2022 - 13:23:46.168 - o.s.boot.SpringApplication -  ERROR - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.caravan.caravan.CaravanApplication.main(CaravanApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:895)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:913)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:935)
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:637)
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267)
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:359)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 23 common frames omitted
+14 May 2022 - 13:27:14.074 - c.caravan.caravan.CaravanApplication -  INFO  - Starting CaravanApplication using Java 18.0.1.1 on us-HP-Pavilion-Laptop-15-eg0xxx with PID 3998 (/home/us/IdeaProjects/caravan/target/classes started by us in /home/us/IdeaProjects/caravan)
+14 May 2022 - 13:27:14.075 - c.caravan.caravan.CaravanApplication -  INFO  - The following 1 profile is active: "dev"
+14 May 2022 - 13:27:14.109 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14 May 2022 - 13:27:14.109 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14 May 2022 - 13:27:14.431 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14 May 2022 - 13:27:14.471 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 35 ms. Found 17 JPA repository interfaces.
+14 May 2022 - 13:27:14.747 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port(s): 8080 (http)
+14 May 2022 - 13:27:14.751 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 May 2022 - 13:27:14.751 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/9.0.62]
+14 May 2022 - 13:27:14.782 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring embedded WebApplicationContext
+14 May 2022 - 13:27:14.782 - o.s.b.w.s.c.ServletWebServerApplicationContext -  INFO  - Root WebApplicationContext: initialization completed in 673 ms
+14 May 2022 - 13:27:14.851 - o.h.jpa.internal.util.LogHelper -  INFO  - HHH000204: Processing PersistenceUnitInfo [name: default]
+14 May 2022 - 13:27:14.868 - org.hibernate.Version -  INFO  - HHH000412: Hibernate ORM core version 5.6.8.Final
+14 May 2022 - 13:27:14.908 - o.h.annotations.common.Version -  INFO  - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+14 May 2022 - 13:27:14.937 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+14 May 2022 - 13:27:15.072 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+14 May 2022 - 13:27:15.081 - org.hibernate.dialect.Dialect -  INFO  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+14 May 2022 - 13:27:15.241 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  ERROR - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:27:15.242 - o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+14 May 2022 - 13:27:15.243 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+14 May 2022 - 13:27:15.260 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+14 May 2022 - 13:27:15.261 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+14 May 2022 - 13:27:15.269 - o.s.b.a.l.ConditionEvaluationReportLoggingListener -  INFO  - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+14 May 2022 - 13:27:15.279 - o.s.boot.SpringApplication -  ERROR - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.caravan.caravan.CaravanApplication.main(CaravanApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: com.caravan.caravan.entity.TripEntity column: guide_id (should be mapped with insert="false" update="false")
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:895)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:913)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:935)
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:637)
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267)
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:359)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 23 common frames omitted
+14 May 2022 - 13:28:39.649 - c.caravan.caravan.CaravanApplication -  INFO  - Starting CaravanApplication using Java 18.0.1.1 on us-HP-Pavilion-Laptop-15-eg0xxx with PID 4129 (/home/us/IdeaProjects/caravan/target/classes started by us in /home/us/IdeaProjects/caravan)
+14 May 2022 - 13:28:39.650 - c.caravan.caravan.CaravanApplication -  INFO  - The following 1 profile is active: "dev"
+14 May 2022 - 13:28:39.684 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14 May 2022 - 13:28:39.684 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  INFO  - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14 May 2022 - 13:28:39.996 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14 May 2022 - 13:28:40.038 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 37 ms. Found 17 JPA repository interfaces.
+14 May 2022 - 13:28:40.317 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port(s): 8080 (http)
+14 May 2022 - 13:28:40.321 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 May 2022 - 13:28:40.321 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/9.0.62]
+14 May 2022 - 13:28:40.353 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring embedded WebApplicationContext
+14 May 2022 - 13:28:40.353 - o.s.b.w.s.c.ServletWebServerApplicationContext -  INFO  - Root WebApplicationContext: initialization completed in 669 ms
+14 May 2022 - 13:28:40.421 - o.h.jpa.internal.util.LogHelper -  INFO  - HHH000204: Processing PersistenceUnitInfo [name: default]
+14 May 2022 - 13:28:40.435 - org.hibernate.Version -  INFO  - HHH000412: Hibernate ORM core version 5.6.8.Final
+14 May 2022 - 13:28:40.484 - o.h.annotations.common.Version -  INFO  - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+14 May 2022 - 13:28:40.517 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+14 May 2022 - 13:28:40.651 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+14 May 2022 - 13:28:40.660 - org.hibernate.dialect.Dialect -  INFO  - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+14 May 2022 - 13:28:41.175 - o.h.e.jdbc.spi.SqlExceptionHelper -  WARN  - SQL Warning Code: 0, SQLState: 00000
+14 May 2022 - 13:28:41.176 - o.h.e.jdbc.spi.SqlExceptionHelper -  WARN  - constraint "uk_dxncrchf6bpj79fgeonfaonbx" of relation "guide" does not exist, skipping
+14 May 2022 - 13:28:41.183 - o.h.e.jdbc.spi.SqlExceptionHelper -  WARN  - SQL Warning Code: 0, SQLState: 00000
+14 May 2022 - 13:28:41.184 - o.h.e.jdbc.spi.SqlExceptionHelper -  WARN  - constraint "uk_rc7r62u5tals0tl5rkeyyo5sb" of relation "profile" does not exist, skipping
+14 May 2022 - 13:28:41.209 - o.h.t.s.i.ExceptionHandlerLoggedImpl -  WARN  - GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists profile add constraint FKol7hbk7arjubdo9ce832xe569 foreign key (photo_id) references attach" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists profile add constraint FKol7hbk7arjubdo9ce832xe569 foreign key (photo_id) references attach" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:581)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:526)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:452)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:263)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:123)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:196)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.caravan.caravan.CaravanApplication.main(CaravanApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.postgresql.util.PSQLException: ERROR: foreign key constraint "fkol7hbk7arjubdo9ce832xe569" cannot be implemented
+  Detail: Key columns "photo_id" and "id" are of incompatible types: character varying and uuid.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:329)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:315)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:291)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:286)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 36 common frames omitted
+14 May 2022 - 13:28:41.213 - o.h.e.t.j.p.i.JtaPlatformInitiator -  INFO  - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+14 May 2022 - 13:28:41.217 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14 May 2022 - 13:28:41.659 - o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14 May 2022 - 13:28:41.779 - o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration -  WARN  - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+14 May 2022 - 13:28:41.871 - o.s.b.d.a.OptionalLiveReloadServer -  INFO  - LiveReload server is running on port 35729
+14 May 2022 - 13:28:41.895 - o.s.b.w.e.tomcat.TomcatWebServer -  INFO  - Tomcat started on port(s): 8080 (http) with context path ''
+14 May 2022 - 13:28:41.903 - c.caravan.caravan.CaravanApplication -  INFO  - Started CaravanApplication in 2.452 seconds (JVM running for 2.883)
+14 May 2022 - 13:31:01.363 - o.a.c.c.C.[Tomcat].[localhost].[/] -  INFO  - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14 May 2022 - 13:31:01.364 - o.s.web.servlet.DispatcherServlet -  INFO  - Initializing Servlet 'dispatcherServlet'
+14 May 2022 - 13:31:01.364 - o.s.web.servlet.DispatcherServlet -  INFO  - Completed initialization in 0 ms
+14 May 2022 - 13:32:11.096 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+14 May 2022 - 13:32:11.098 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+14 May 2022 - 13:32:11.102 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.

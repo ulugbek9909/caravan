@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.UUID;
 
 
 @Slf4j
@@ -37,14 +36,14 @@ public class ProfileController {
 
     //update profile
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") UUID id,
+    public ResponseEntity<?> update(@PathVariable("id") Long id,
                                     @RequestBody @Valid ProfileDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
 
     //delete profile
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<?> delete(@PathVariable("id") UUID id) {
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.delete(id));
     }
 

@@ -40,7 +40,7 @@ public class ConverterService {
         dto.setId(entity.getId());
         dto.setProfileId(entity.getProfileId());
         dto.setBiography(entity.getBiography());
-        dto.setIsHiring(entity.getIsHiring());
+        dto.setActivity(entity.getActivity());
         dto.setSecondPhoneNumber(entity.getSecondPhoneNumber());
         dto.setGuideRate(entity.getGuideRate());
         dto.setCreatedDate(entity.getCreatedDate());
