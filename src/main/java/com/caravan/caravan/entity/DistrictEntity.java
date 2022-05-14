@@ -25,9 +25,9 @@ public class DistrictEntity extends BaseEntity{
 
     @Column(name = "region_id")
     private Long regionId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", insertable = false, updatable = false)
     private RegionEntity region;
-
 
 }

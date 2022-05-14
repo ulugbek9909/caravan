@@ -2,85 +2,51 @@ package com.caravan.caravan.service;
 
 import com.caravan.caravan.dto.DistrictDTO;
 import com.caravan.caravan.entity.DistrictEntity;
+import com.caravan.caravan.exceptions.DistrictAlreadyExistsExeption;
 import com.caravan.caravan.exceptions.ItemNotFoundException;
 import com.caravan.caravan.repository.DistrictRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class DistrictService {
 
-    private final DistrictRepository repository;
+    private DistrictRepository repository;
 
-    public DistrictDTO create(DistrictDTO dto) {
+    public DistrictDTO create (DistrictDTO dto){
+        Optional<DistrictEntity> byId = repository.findById(dto.getId());
 
-        Optional<DistrictEntity> optional = repository.findByKey(dto.getKey());
-        if (optional.isEmpty()) {
-            throw new ItemNotFoundException("Item not found");
+        if (byId.isPresent()){
+            throw new DistrictAlreadyExistsExeption("District already exists");
         }
-        DistrictEntity entity = new DistrictEntity();
-        entity.setKey(dto.getKey());
-        entity.setNameRu(dto.getNameRu());
-        entity.setNameUz(dto.getNameUz());
-        entity.setNameEn(dto.getNameEn());
-        entity.setRegionId(dto.getRegionId());
-        entity.setCreatedDate(LocalDateTime.now());
+
+        DistrictEntity entity = ConverterService.convertToEntity(dto);
         repository.save(entity);
         dto.setId(entity.getId());
-        return toDTO(entity);
-    }
-
-    public DistrictDTO update(String id, DistrictDTO dto) {
-
-        DistrictEntity entity = repository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
-        if (entity == null) {
-            throw new ItemNotFoundException("Id null");
-        }
-
-        entity.setKey(dto.getKey());
-        entity.setNameEn(dto.getNameEn());
-        entity.setNameUz(dto.getNameUz());
-        entity.setNameRu(dto.getNameRu());
-        entity.setRegionId(dto.getRegionId());
-        entity.setUpdatedDate(LocalDateTime.now());
-        repository.save(entity);
-
-        return toDTO(entity);
-    }
-
-//    public Boolean delete(String id) {
-//        DistrictEntity entity = districtRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ItemNotFoundException("Not Found!"));
-//
-//        if (entity == null) {
-//            throw new ItemNotFoundException("Not Found!");
-//        }
-//
-//        int n = districtRepository.updateVisible(Integer.valueOf(id));
-//        return n > 0;
-//    }
-
-    public DistrictDTO getById(Long id) {
-        DistrictEntity entity = repository.findById(id)
-                .orElseThrow(() -> new ItemNotFoundException("Not Found!"));
-
-        if (entity == null) {
-            throw new ItemNotFoundException("Id null");
-        }
-        return toDTO(entity);
-    }
-
-    public DistrictDTO toDTO(DistrictEntity entity) {
-        DistrictDTO dto = new DistrictDTO();
-        dto.setKey(entity.getKey());
-        dto.setNameUz(entity.getNameUz());
-        dto.setNameRu(entity.getNameRu());
-        dto.setNameEn(entity.getNameEn());
-        dto.setRegionId(entity.getRegionId());
         return dto;
+    }
+
+    public DistrictDTO getbyId(Long id){
+        Optional<DistrictEntity> district = repository.findById(id);
+        if (!district.isPresent()){
+            throw new ItemNotFoundException("item not found ");
+        }
+        return ConverterService.convertToDTO(district.get());
+    }
+    public List<DistrictDTO> getlist(){
+        List<DistrictDTO> dtoList = new ArrayList<>();
+        List<DistrictEntity> all = repository.findAll();
+        for (DistrictEntity entity :all) {
+            dtoList.add(ConverterService.convertToDTO(entity));
+        }
+        return dtoList;
     }
 
 }

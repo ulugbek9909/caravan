@@ -19,4 +19,5 @@ public class BaseDTO {
     protected LocalDateTime createdDate;
 
     protected LocalDateTime updatedDate;
+
 }
