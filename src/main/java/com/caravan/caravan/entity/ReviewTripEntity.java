@@ -23,9 +23,6 @@ public class ReviewTripEntity extends BaseEntity {
     @Column(name = "profile_id")
     private UUID profileId;
 
-    @Column(name = "created_date")
-    private Instant createdDate;
-
     @Column(name = "type")
     private String type;
 
