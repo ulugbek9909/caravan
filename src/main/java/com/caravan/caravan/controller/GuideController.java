@@ -62,7 +62,7 @@ public class GuideController {
         return ResponseEntity.ok(service.updateAll(id,dto,profileDTO));
     }
 
-    @PutMapping("/update/phote/{id}")
+    @PutMapping("/update/photo/{id}")
    // @PutMapping("/update/{key}")
 /*    public ResponseEntity<?> update(@RequestParam("file") MultipartFile file,
                                     @PathVariable("key") String key) {*/

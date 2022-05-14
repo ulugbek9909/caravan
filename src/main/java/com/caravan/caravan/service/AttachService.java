@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -87,7 +88,7 @@ public class AttachService {
 
             if (resource.exists() || resource.isReadable()) {
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                                "attachment; filename=\"" + entity.getOriginName() + "\"")
+                                "attachment; filename=\"" + entity.getOriginalName() + "\"")
                         .body(resource);
 
             } else {
@@ -112,7 +113,7 @@ public class AttachService {
                 "/" + entity.getId() + "." + entity.getExtension());
 
         if (file.delete()) {
-            attachRepository.deleteById(key);
+            attachRepository.deleteById(UUID.fromString(key));
             return true;
         } else throw new AppBadRequestException("Could not read the file!");
 
@@ -121,7 +122,7 @@ public class AttachService {
 
     public AttachEntity saveAttach(AttachEntity entity, String pathFolder, String extension, MultipartFile file) {
         entity.setPath(pathFolder);
-       // entity.setOriginalName(file.getOriginalFilename());
+        entity.setOriginalName(file.getOriginalFilename());
         entity.setExtension(extension);
         entity.setSize(file.getSize());
         attachRepository.save(entity);
@@ -132,7 +133,7 @@ public class AttachService {
         AttachDTO dto = new AttachDTO();
         dto.setId(entity.getId());
         dto.setCreatedDate(entity.getCreatedDate());
-       // dto.setOriginalName(entity.getOriginalName());
+        dto.setOriginalName(entity.getOriginalName());
         dto.setPath(entity.getPath());
         dto.setUrl(domainName + "attach/download/" + entity.getId());
         return dto;
@@ -150,7 +151,7 @@ public class AttachService {
     }
 
     public AttachEntity get(String id) {
-        return attachRepository.findById(id).orElseThrow(() -> {
+        return attachRepository.findById(UUID.fromString(id)).orElseThrow(() -> {
             throw new ItemNotFoundException("Attach not found");
         });
     }

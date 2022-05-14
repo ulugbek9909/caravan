@@ -39,7 +39,7 @@ public class GuideService {
         entity.setGuideRate(0d);
         entity.setBiography(dto.getBiography());
         entity.setActivity(GuideStatus.ACTIVE);
-
+        entity.setSecondPhoneNumber(dto.getSecondPhoneNumber());
         repository.save(entity);
 
         return ConverterService.convertToDTO(entity);
@@ -144,14 +144,15 @@ public class GuideService {
 
         AttachEntity photo = profileEntity.getPhoto();
         AttachDTO attachDTO = attachService.update(file, String.valueOf(photo.getId()));
-        AttachEntity byId = attachRepository.getById(String.valueOf(attachDTO.getId()));
+
+        /*AttachEntity byId = attachRepository.getById(attachDTO.getId());
 
         profileEntity.setPhoto(byId);
         profileEntity.setPhotoId(String.valueOf(byId.getId()));
 
         ProfileEntity profile = profileRepository.save(profileEntity);
 
-        guideEntity.setProfile(profile);
+        guideEntity.setProfile(profile);*/
 
         repository.save(guideEntity);
         return true;

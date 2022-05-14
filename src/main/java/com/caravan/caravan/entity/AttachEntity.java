@@ -19,7 +19,7 @@ public class AttachEntity  {
     private UUID id;
 
     @Column
-    private String originName;
+    private String originalName;
 
     @Column
     private Long size;
