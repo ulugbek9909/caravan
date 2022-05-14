@@ -6,14 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Getter
+@Table(name = "trip")
 @Setter
 @Entity
-@Table(name = "trip")
-public class TripEntity {
-
-    @Id
-    @Column(name = "id")
-    private Long id;
+public class TripEntity extends BaseEntity{
 
     @Column(name = "name")
     private String name;

@@ -1,13 +1,13 @@
 package com.caravan.caravan.entity;
 
+import com.caravan.caravan.enums.ReviewType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
+
 @Entity
 @Getter
 @Setter
@@ -17,13 +17,26 @@ public class ReviewTripEntity extends BaseEntity {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "trip_id")
-    private UUID tripId;
+    @Column(name = "trip_id", nullable = false)
+    private Long tripId;
+    @JoinColumn(name = "trip_id", insertable = false, updatable = false)
+    @ManyToOne
+    private TripEntity trip;
 
-    @Column(name = "profile_id")
-    private UUID profileId;
+    @Column(name = "profile_id", nullable = false)
+    private Long profileId;
+    @JoinColumn(name = "profile_id", insertable = false, updatable = false)
+    @ManyToOne
+    private ProfileEntity profile;
 
-    @Column(name = "type")
-    private String type;
+    // TODO: 14-May-22 Reply masalasi
+//    @Column(name = "type")
+//    private ReviewType type;
+//
+//    @Column(name = "reply_id")
+//    private Long replyId;
+//    @JoinColumn(name = "reply_id", insertable = false, updatable = false)
+//    @ManyToOne
+//    private ReviewTripEntity reply;
 
 }

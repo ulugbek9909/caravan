@@ -9,9 +9,9 @@ import javax.persistence.Table;
 import java.lang.Long;
 
 @Entity
+@Table(name = "review_guide")
 @Getter
 @Setter
-@Table(name = "review_guide")
 public class ReviewGuideEntity extends BaseEntity {
 
     @Column(name = "content")
