@@ -111,12 +111,12 @@ public class ProfileService {
             log.warn("Not access {}", id);
             throw new AppForbiddenException("Not access");
         }
-        if (Optional.ofNullable(entity.getPhoto()).isEmpty()) {
+        if (Optional.ofNullable(entity.getPhotoId()).isEmpty()) {
             log.warn("Not found {}", id);
             throw new AppBadRequestException("Photo not found");
         }
-        attachService.delete(entity.getPhoto().getId());
-        entity.setPhoto(null);
+        attachService.delete(entity.getPhotoId());
+        entity.setPhotoId(null);
         repository.save(entity);
         return true;
     }
