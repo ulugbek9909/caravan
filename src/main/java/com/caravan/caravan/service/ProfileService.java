@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +24,6 @@ public class ProfileService {
     private final ProfileRepository repository;
     private final AttachService attachService;
 
-    private final AttachService attachService;
 
 
     public ProfileDTO create(ProfileDTO dto) {
@@ -92,7 +92,7 @@ public class ProfileService {
         return ConverterService.convertToDTO(entity);
     }
 
-    public AttachDTO updateProfileImage(Long id,UUID attachId){
+    public AttachDTO updateProfileImage(Long id, UUID attachId){
 
         ProfileDTO profileDTO = getById(id);
         if (profileDTO.getPhotoId() != null){
@@ -115,7 +115,7 @@ public class ProfileService {
             log.warn("Not found {}", id);
             throw new AppBadRequestException("Photo not found");
         }
-        attachService.delete(entity.getPhoto().getId().toString());
+        attachService.delete(entity.getPhoto().getId());
         entity.setPhoto(null);
         repository.save(entity);
         return true;
