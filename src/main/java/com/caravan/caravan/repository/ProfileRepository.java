@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface ProfileRepository extends JpaRepository<ProfileEntity, Long> {
     Optional<ProfileEntity> findByPhoneNumber(String phoneNumber);
+
 }

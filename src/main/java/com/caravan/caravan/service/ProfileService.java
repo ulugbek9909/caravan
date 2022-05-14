@@ -52,6 +52,13 @@ public class ProfileService {
         });
         return ConverterService.convertToDTO(entity);
     }
+    public ProfileDTO getProfileByPhone(String phone){
+        Optional<ProfileEntity> phoneNumber = repository.findByPhoneNumber(phone);
+        if (!phoneNumber.isPresent()){
+            throw new ItemNotFoundException("Item not found");
+        }
+        return ConverterService.convertToDTO(phoneNumber.get());
+    }
 
     public ProfileDTO update(Long id, ProfileDTO dto) {
         ProfileEntity entity = repository.findById(id).orElseThrow(() -> {

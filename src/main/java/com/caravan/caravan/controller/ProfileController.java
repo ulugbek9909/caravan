@@ -27,12 +27,17 @@ public class ProfileController {
         Long profileId = JwtUtil.getIdFromHeader(request);
         return ResponseEntity.ok(service.getById(id));
     }
+    @GetMapping("/phone")
+    public ResponseEntity<?> getProfileDetail( @RequestBody String phoneNumber){
+        return ResponseEntity.ok(service.getProfileByPhone(phoneNumber));
+    }
 
     //create profile
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody @Valid ProfileDTO dto) {
         return ResponseEntity.ok(service.create(dto));
     }
+
 
     //update profile
     @PutMapping("/{id}")
